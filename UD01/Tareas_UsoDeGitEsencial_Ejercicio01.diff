@@ -1,0 +1,14 @@
+diff --git a/tmp/diferente.txt b/tmp/diferente.txt
+index 66113b1..b65e52b 100644
+--- a/tmp/diferente.txt
++++ b/tmp/diferente.txt
+@@ -1 +1 @@
+-Esto en otro diferente
++Esto en otro diferente xd
+diff --git a/tmp/texto.txt b/tmp/texto.txt
+index 50f5693..c233e58 100644
+--- a/tmp/texto.txt
++++ b/tmp/texto.txt
+@@ -1 +1 @@
+-Texto Plano
++Texto Plano y cambiado
