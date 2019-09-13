@@ -1,0 +1,6 @@
+* af8a96e (HEAD -> master, Feature-CambioNombres) He cambiado los fichero .txt a .dat
+* 78e2be3 (origin/master, origin/HEAD) Ejercicio 1 en el que se muestra las diferencias en los ficheros creados usando git diff
+* a0b3666 Ahora he añadido Otro.txt y Ultimo.txt
+* c9d6505 He añadido diferente.txt
+* bc97ca8 Temporales frescos
+* 5ab40b2 Initial commit
