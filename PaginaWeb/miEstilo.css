@@ -1,0 +1,14 @@
+@media(min-width:600px){
+
+nav ul li{
+    font-family: Arial;
+    font-size: 11px;
+    text-decoration: none;
+    list-style: none;
+    float: left;
+    padding: 10px;
+    text-align: center
+    
+}
+}
+
