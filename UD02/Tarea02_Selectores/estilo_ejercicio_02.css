@@ -1,0 +1,38 @@
+body{
+background-color: lightgrey;
+font-family: sans-serif;
+}
+
+h1{
+text-decoration: black;
+text-align: center;
+}
+
+nav ul li {
+
+list-style: none;
+
+}
+
+a{
+text-decoration: none;
+color: black;
+
+}
+
+a[rel='alternate']:after{ 
+    content: " Brexit";
+}
+
+a[rel='next']:before{ 
+    content:url("");
+}
+
+a[rel='tag']:before{ 
+    content:url("shopping_cart-24px.svg");
+}
+
+.navegacion{
+padding: 1%;
+
+}
