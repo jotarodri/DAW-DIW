@@ -11,7 +11,7 @@ text-align: center;
 nav ul li {
 
 list-style: none;
-
+display:inline-block;
 }
 
 a{
@@ -25,14 +25,34 @@ a[rel='alternate']:after{
 }
 
 a[rel='next']:before{ 
-    content:url("");
+    content:url("add_circle_outline-24px.svg");
 }
 
 a[rel='tag']:before{ 
     content:url("shopping_cart-24px.svg");
 }
 
-.navegacion{
-padding: 1%;
+a[rel='bookmark']:before{ 
+    content:url("24px.svg");
+}
 
+a[rel='help']:before{ 
+    content:url("picture_as_pdf-24px.svg");
+}
+
+a[rel='search']:before{ 
+    content:url("image_search-24px.svg");
+}
+
+a[rel='nofollow']:before{ 
+    content:url("security-24px.svg");
+}
+
+
+
+
+.navegacion{
+padding: 5%;
+margin-top: 3%;
+width: 20%;
 }
