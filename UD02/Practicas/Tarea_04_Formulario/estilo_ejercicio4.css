@@ -1,0 +1,41 @@
+*{
+font-family: 'Grenze';
+}
+
+body{
+    font-size: 20px;
+
+}
+
+input[type='text']{
+
+background: lightblue;
+
+}
+
+input[type='number']{
+
+    background: lightblue;
+    
+}
+
+input[type='text']:invalid{
+    background: lightcoral;
+}
+
+input[id='puntosCordura']:out-of-range{
+
+    background: lightcoral;
+}
+
+select[id='profesion']{
+    border-radius: 15px;
+}
+
+input[type="submit"]{
+    border: none;
+    border-radius: 15px;
+    background-color: lightblue;
+    text-transform: uppercase;
+}
+
