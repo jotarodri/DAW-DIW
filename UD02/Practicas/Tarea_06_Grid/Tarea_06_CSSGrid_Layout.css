@@ -1,0 +1,23 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    grid-gap: 10px;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: black;
+    font-size: 30px;
+}
+
+.item2 {
+    grid-column: span 3;
+}
+
+div:nth-child(odd) {
+    background-color: gray;
+}
+
+.item:hover {
+    box-shadow: 6px 6px black;
+}
