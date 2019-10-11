@@ -1,6 +1,8 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 2fr;
+        
+    /*Margen para los grid*/
     grid-gap: 10px;
 }
 
@@ -14,10 +16,31 @@ h1 {
     grid-column: span 3;
 }
 
-div:nth-child(odd) {
+.item:nth-child(odd) {
     background-color: gray;
 }
 
-.item:hover {
+/*Aplicamos la sombra al div que contiene los numeros*/
+.item:nth-child(odd):hover{
     box-shadow: 6px 6px black;
+}
+
+/*Aplicamos la sombra a .item cuando pasemos el ratón por el div de los numeros*/
+.item:nth-child(odd):hover + .item {
+    box-shadow: 6px 6px black;
+}
+
+
+#SealOfApproval{
+    width: 200px;
+    height: 200px;
+    background-image: url("cthulhu_approval.gif");  
+ 
+    /*Tamaño de la imagen más grande que el div para que no se repita*/
+ background-size: 210px 210px;
+ /*Positio fixed para que la imagen se quede estática*/
+ position: fixed;
+
+right: -50px;
+margin-top: 325px;
 }
