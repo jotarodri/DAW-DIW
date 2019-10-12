@@ -1,0 +1,66 @@
+.pagina{
+
+    display:grid;
+/*Una columna para el nav y otra para el main*/
+    grid-template-columns: 200px 1fr;
+   
+}
+
+header{
+    /*Hacemos que el header ocupe los 2 espacios de la columna*/
+    grid-column: span 2;
+}
+
+header h1{
+    font-size: 350%;
+    text-align: center;
+    
+}
+
+nav{
+    margin-top: 37%;
+    margin-left: 65%;  
+}
+
+nav ul li a{
+font-size: 300%;
+text-decoration: none;
+}
+
+li{
+    list-style: none;
+    width: 250px;
+    height: 120px;
+    margin-top: 15%;
+    box-shadow: 5px 5px 15px black;
+}
+
+main{
+
+display: grid;
+/*Las columnas son de 300px porque si es 1fr las imagenes son muy grandes*/
+grid-template-columns: 300px 300px 300px;
+margin-top: 6%;
+margin-left: 20%;
+/*Separacion entre las imagenes*/
+row-gap: 30px;
+}
+
+img{
+ width: 100%;  
+ border: 1px solid white;
+ box-shadow: 2px 2px 10px orange;
+}
+
+/*Cuando le demos al enlance pondrá un fondo verde a la imagen relacionada*/
+img:target{
+    box-shadow: 10px 10px 15px 10px green;
+}
+
+footer{
+    height: 100px;
+    margin-top: 10%;
+    grid-column: span 2;
+    text-align: center;
+    font-size: 250%;
+}
