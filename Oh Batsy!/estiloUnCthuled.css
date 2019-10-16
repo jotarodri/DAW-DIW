@@ -1,0 +1,64 @@
+body {
+    display: grid;
+    background-color: yellow;
+}
+
+.mapa {
+    width: 1200px;
+    height: 695px;
+    margin-left: 10%;
+    display: grid;
+    grid-template-columns: repeat(21, 1fr);
+    grid-template-rows: repeat(14, 1fr);
+}
+
+.muro,
+.camino {
+    background-color: lightsalmon;
+}
+
+.muro {
+    background-color: black;
+}
+
+.techo {
+    background-color: yellow;
+}
+
+.puerta {
+    background-image: url("imgs/logo.png");
+    background-size: 100% 100%;
+    background-color: lightsalmon;
+}
+
+
+.personajeDerecha {
+    background-image: url("imgs/batman.gif");
+    background-size: 100% 100%;
+    background-color: lightsalmon;
+}
+
+.personajeIzquierda {
+    background-image: url("imgs/batmanIzquierda.gif");
+    background-size: 100% 100%;
+    background-color: lightsalmon;
+}
+
+.personajeAbajo {
+    background-image: url("imgs/batmanAbajo.gif");
+    background-size: 100% 100%;
+    background-color: lightsalmon;
+}
+
+.personajeArriba {
+    background-image: url("imgs/batmanArriba.gif");
+    background-size: 100% 100%;
+    background-color: lightsalmon;
+}
+
+
+.villano {
+    background-image: url("imgs/batman.gif");
+    background-size: 100% 100%;
+    background-color: lightsalmon;
+}
