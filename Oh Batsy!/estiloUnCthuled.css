@@ -12,13 +12,21 @@ body {
     grid-template-rows: repeat(14, 1fr);
 }
 
-.muro,
 .camino {
-    background-color: lightsalmon;
+    background-image: url("imgs/textura3.jpeg");
+    background-size: 100% 100%;
+    /*background-color: lightcoral;*/
+}
+
+.puerta {
+    background-image: url("imgs/logo.png");
+    background-size: 100% 100%;
 }
 
 .muro {
+    /* background-image: url("imgs/edificio3.jpg");*/
     background-color: black;
+    background-size: 100% 100%;
 }
 
 .techo {
@@ -28,37 +36,34 @@ body {
 .puerta {
     background-image: url("imgs/logo.png");
     background-size: 100% 100%;
-    background-color: lightsalmon;
 }
 
+.huella {
+    background-image: url("imgs/huella.png"), url("imgs/textura3.jpeg");
+    background-size: 100% 100%;
+}
 
 .personajeDerecha {
-    background-image: url("imgs/batman.gif");
+    background-image: url("imgs/batman.gif"), url("imgs/textura3.jpeg");
     background-size: 100% 100%;
-    background-color: lightsalmon;
 }
 
 .personajeIzquierda {
-    background-image: url("imgs/batmanIzquierda.gif");
+    background-image: url("imgs/batmanIzquierda.gif"), url("imgs/textura3.jpeg");
     background-size: 100% 100%;
-    background-color: lightsalmon;
 }
 
 .personajeAbajo {
-    background-image: url("imgs/batmanAbajo.gif");
+    background-image: url("imgs/batmanAbajo.gif"), url("imgs/textura3.jpeg");
     background-size: 100% 100%;
-    background-color: lightsalmon;
 }
 
 .personajeArriba {
-    background-image: url("imgs/batmanArriba.gif");
+    background-image: url("imgs/batmanArriba.gif"), url("imgs/textura3.jpeg");
     background-size: 100% 100%;
-    background-color: lightsalmon;
 }
 
-
 .villano {
-    background-image: url("imgs/batman.gif");
+    background-image: url("imgs/joker.gif");
     background-size: 100% 100%;
-    background-color: lightsalmon;
 }
