@@ -28,6 +28,7 @@ window.onload = function() {
 
 }
 
+
 function establecerMovimiento(img) {
 
 
@@ -78,13 +79,21 @@ function establecerMovimiento(img) {
             } else if (arrayMapa[i][j] == 1) {
                 newDiv.classList.add("muro");
 
+
+
             } else if (arrayMapa[i][j] == 3) {
 
                 newDiv.classList.add("huella");
+            } else if (arrayMapa[i][j] == 5) {
+
+
             }
+
+
             document.querySelector(".mapa").appendChild(newDiv);
         }
     }
+
 
     document.onkeydown = moverse;
 
@@ -117,11 +126,6 @@ function moverse(params) {
                     moverArriba();
                     establecerMovimiento("batmanArriba");
 
-                    if (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] == 1) {
-                        arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] = 8;
-                        console.log("Muro a tu ?");
-
-                    }
 
                 }
             }
@@ -171,6 +175,29 @@ function moverse(params) {
             break;
 
     }
+    if (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] == 1) {
+        console.log("Muro a tu izquierda");
+
+
+    }
+
+    if (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] == 1) {
+        console.log("Muro a tu derecha");
+
+    }
+
+    if (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] == 1) {
+        console.log("Muro abajo tuya");
+
+
+    }
+    if (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] == 1) {
+        console.log("Muro arriba");
+
+
+
+
+    }
     arrayMapa[posicionPersonajeY][posicionPersonajeX] = 3;
 }
 
@@ -200,5 +227,9 @@ function moverDerecha() {
 
     posicionPersonajeX++;
 
+
+}
+
+function name(params) {
 
 }

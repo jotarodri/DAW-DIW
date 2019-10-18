@@ -33,6 +33,10 @@ body {
     background-color: yellow;
 }
 
+.pasado {
+    background-color: red;
+}
+
 .puerta {
     background-image: url("imgs/logo.png");
     background-size: 100% 100%;
