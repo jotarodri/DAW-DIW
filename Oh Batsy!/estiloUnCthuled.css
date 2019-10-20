@@ -71,7 +71,7 @@ body {
     background-size: 100% 100%;
 }
 
-.villano {
-    background-image: url("imgs/joker.gif");
+.momia {
+    background-image: url("imgs/joker.gif"),  url("imgs/textura3.jpeg");
     background-size: 100% 100%;
 }

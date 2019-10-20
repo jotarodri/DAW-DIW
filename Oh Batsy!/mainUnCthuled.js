@@ -12,7 +12,7 @@ let arrayMapa = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
     [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0]
 ];
 
 let posicionPersonajeX = 9; //ARRIBA(-1) ABAJO(+1)
@@ -84,9 +84,13 @@ function establecerMovimiento(img) {
             } else if (arrayMapa[i][j] == 3) {
 
                 newDiv.classList.add("huella");
+
             } else if (arrayMapa[i][j] == 5) {
 
                 newDiv.classList.add("muroRevelado");
+            }else if (arrayMapa[i][j] == 4) {
+
+                newDiv.classList.add("momia");
             }
 
 
