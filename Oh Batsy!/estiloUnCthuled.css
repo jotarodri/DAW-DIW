@@ -16,6 +16,10 @@ body {
     background-image: url("imgs/textura3.jpeg");
     background-size: 100% 100%;
     /*background-color: lightcoral;*/
+} 
+.muroRevelado{
+    background-color: blue;
+    background-size: 100% 100%;
 }
 
 .puerta {
