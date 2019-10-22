@@ -21,6 +21,13 @@ let posicionPersonajeY = 0; //IZQUIERDA(-1) DERECHA(+1)
 let posicionHuellaX = posicionPersonajeX - 1; //ARRIBA(-1) ABAJO(+1)
 let posicionHuellaY = posicionPersonajeY - 1; //IZQUIERDA(-1) DERECHA(+1)
 
+let contadorPar = 0;
+let contadorImpar = 0;
+
+let muroPar = 1;
+let muroImpar = 1;
+
+
 
 window.onload = function() {
 
@@ -72,12 +79,44 @@ function establecerMovimiento(img) {
                  newDiv.classList.add("villano");
              }*/
 
+
+       
+
             if (arrayMapa[i][j] == 0) {
 
                 newDiv.classList.add("camino");
 
-            } else if ((arrayMapa[i][j] == 1) ||(arrayMapa[i][j] == 8 )) {
+            } else if ((arrayMapa[i][j] == 1)) {
                 newDiv.classList.add("muro");
+
+
+                
+             if (i % 2 == 0 && contadorPar < 3) {
+
+                newDiv.classList.add("Muro" + muroPar);
+
+                
+                contadorPar++;
+
+            } else if (i% 2 != 0 && contadorImpar < 3) {
+
+                newDiv.classList.add("Muro" + muroImpar);
+
+                contadorImpar++;
+
+            }
+
+            if (contadorPar == 3) {
+
+                contadorPar = 0;
+               muroPar++;
+            }
+
+            if (contadorImpar == 3) {
+
+                contadorImpar = 0;
+                muroImpar++;
+            }
 
 
 
@@ -96,12 +135,12 @@ function establecerMovimiento(img) {
 
             document.querySelector(".mapa").appendChild(newDiv);
         }
-    }
-
-
+        
     document.onkeydown = moverse;
-
+    }
 }
+
+
 
 function reiniciarMapa() {
 
