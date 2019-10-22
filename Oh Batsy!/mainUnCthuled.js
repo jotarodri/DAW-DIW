@@ -22,7 +22,9 @@ let posicionHuellaX = posicionPersonajeX - 1; //ARRIBA(-1) ABAJO(+1)
 let posicionHuellaY = posicionPersonajeY - 1; //IZQUIERDA(-1) DERECHA(+1)
 
 var arrayMuros = [];
+var objetosMuro = [];
 
+let contenidoMuro = [];
 
 window.onload = function() {
 
@@ -32,7 +34,7 @@ window.onload = function() {
 
 
 function establecerMovimiento(img) {
-
+    objetosRandom();
     let contadorPar = 0;
     let contadorImpar = 0;
 
@@ -92,48 +94,38 @@ function establecerMovimiento(img) {
             } else if ((arrayMapa[i][j] == 1)) {
                 newDiv.classList.add("muro");
 
-
-
-                /*  if (i % 2 == 0 && contadorPar < 3) {
-
-                    newDiv.classList.add("Muro" + muroPar);
-                    arrayMuros.push(newDiv);
-
-                    contadorPar++;
-
-                } else if (i % 2 != 0 && contadorImpar < 3) {
-
-                    newDiv.classList.add("Muro" + muroImpar);
-                    arrayMuros.push(newDiv);
-                    contadorImpar++;
-
-                }
-
-                if (contadorPar == 3) {
-
-                    contadorPar = 0;
-                    muroPar++;
-                }
-
-                if (contadorImpar == 3) {
-
-                    contadorImpar = 0;
-                    muroImpar++;
-                }
-*/
-
-
             } else if (arrayMapa[i][j] == 3) {
 
                 newDiv.classList.add("huella");
 
             } else if (arrayMapa[i][j] == 4) {
 
-                newDiv.classList.add("momia");
+                newDiv.classList.add("villano");
 
             } else if (arrayMapa[i][j] == 5) {
 
                 newDiv.classList.add("muroRevelado");
+
+            }else if (arrayMapa[i][j] == 20 && arrayMapa[i][j-1] == 20 && arrayMapa[i][j+1] == 20 && arrayMapa[i+1][j] == 20 && arrayMapa[i+1][j-1] == 20 && arrayMapa[i+1][j+1] == 20) {
+
+                newDiv.classList.add("llave");
+
+            }else if (arrayMapa[i][j] == 30 && arrayMapa[i][j-1] == 30 && arrayMapa[i][j+1] == 30 && arrayMapa[i+1][j] == 30 && arrayMapa[i+1][j-1] == 30 && arrayMapa[i+1][j+1] == 30) {
+
+                newDiv.classList.add("sarcofago");
+
+            }else if (arrayMapa[i][j] == 40 && arrayMapa[i][j-1] == 40 && arrayMapa[i][j+1] == 40 && arrayMapa[i+1][j] == 40 && arrayMapa[i+1][j-1] == 40 && arrayMapa[i+1][j+1] == 40) {
+
+                newDiv.classList.add("pergamino");
+
+            }else if (arrayMapa[i][j] == 50 && arrayMapa[i][j-1] == 50 && arrayMapa[i][j+1] == 50 && arrayMapa[i+1][j] == 50 && arrayMapa[i+1][j-1] == 50 && arrayMapa[i+1][j+1] == 50) {
+
+                newDiv.classList.add("momia");
+
+            }
+            else if (arrayMapa[i][j] == 60) {
+
+                newDiv.classList.add("nada");
 
             }
 
@@ -142,7 +134,9 @@ function establecerMovimiento(img) {
         }
 
         document.onkeydown = moverse;
+       
     }
+    
 }
 
 
@@ -300,7 +294,7 @@ function comprobarMuro(params) {
         }
 
     }
-
+    
 }
 
 
@@ -317,7 +311,7 @@ function pintarMuro(contadorPilar) {
                     for (let x = 0; x < 5; x++) {
 
                         if (arrayMapa[coordernadaY + y][coordernadaX + x] == 1) {
-                            arrayMapa[coordernadaY + y][coordernadaX + x] = 5;
+                            arrayMapa[coordernadaY + y][coordernadaX + x] = contenidoMuro[comparador];
                         }
 
                     }
@@ -330,5 +324,45 @@ function pintarMuro(contadorPilar) {
         }
     }
 
+    
+}
+
+
+function objetosRandom() {
+
+    let llave = false;
+    let momia = false;
+    let pergamino = false;
+    let urna = false;
+    
+    for (let index = 0; index < 20; index++) {
+      
+        let random  = Math.floor(Math.random() * 5);
+
+        if (random == 0 && !llave) {//LLAVE 20
+            contenidoMuro.push(20);
+            llave = true;
+
+        } else if (random == 1 && !urna) {//URNA 30
+            contenidoMuro.push(30);
+            urna = true;
+
+        } else if (random == 2 && !momia) {//MOMIA 40
+            contenidoMuro.push(40);
+            momia = true;
+
+        } else if (random == 3 && !pergamino) {//PERGAMINO 50
+            contenidoMuro.push(50);
+            pergamino = true;
+
+        } else {//NADA 60
+            contenidoMuro.push(60);
+
+        }
+
+        
+    }
+
 
 }
+

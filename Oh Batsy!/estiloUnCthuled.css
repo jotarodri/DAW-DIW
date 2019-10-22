@@ -13,7 +13,7 @@ body {
 }
 
 .camino {
-    background-image: url("imgs/textura3.jpeg");
+    background-image: url("imgs/camino.jpeg");
     background-size: 100% 100%;
     /*background-color: lightcoral;*/
 }
@@ -43,6 +43,7 @@ body {
     background-color: yellow;
 }
 
+
 .pasado {
     background-color: red;
 }
@@ -53,31 +54,55 @@ body {
 }
 
 .huella {
-    background-image: url("imgs/huella.png"), url("imgs/textura3.jpeg");
+    background-image: url("imgs/huella.png"), url("imgs/camino.jpeg");
+    background-size: 100% 100%;
+}
+
+.llave{
+    
+    background-image: url("imgs/llaveBatmovil.jpg");
+    background-size: 100% 100%;
+ 
+}
+
+.nada{
+background-color: white;
+}
+.sarcofago{
+    background-image: url("imgs/urna.gif");
+    background-size: 100% 100%;
+}
+.momia{
+    background-image: url("imgs/momia.png");
+    background-size: 100% 100%;
+}
+
+.pergamino{
+    background-image: url("imgs/pergamino.gif");
     background-size: 100% 100%;
 }
 
 .personajeDerecha {
-    background-image: url("imgs/batman.gif"), url("imgs/textura3.jpeg");
+    background-image: url("imgs/batman.gif"), url("imgs/camino.jpeg");
     background-size: 100% 100%;
 }
 
 .personajeIzquierda {
-    background-image: url("imgs/batmanIzquierda.gif"), url("imgs/textura3.jpeg");
+    background-image: url("imgs/batmanIzquierda.gif"), url("imgs/camino.jpeg");
     background-size: 100% 100%;
 }
 
 .personajeAbajo {
-    background-image: url("imgs/batmanAbajo.gif"), url("imgs/textura3.jpeg");
+    background-image: url("imgs/batmanAbajo.gif"), url("imgs/camino.jpeg");
     background-size: 100% 100%;
 }
 
 .personajeArriba {
-    background-image: url("imgs/batmanArriba.gif"), url("imgs/textura3.jpeg");
+    background-image: url("imgs/batmanArriba.gif"), url("imgs/camino.jpeg");
     background-size: 100% 100%;
 }
 
-.momia {
-    background-image: url("imgs/joker.gif"), url("imgs/textura3.jpeg");
+.villano {
+    background-image: url("imgs/joker.gif"), url("imgs/camino.jpeg");
     background-size: 100% 100%;
 }
