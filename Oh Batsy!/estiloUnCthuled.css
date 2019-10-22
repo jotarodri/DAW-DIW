@@ -16,9 +16,15 @@ body {
     background-image: url("imgs/textura3.jpeg");
     background-size: 100% 100%;
     /*background-color: lightcoral;*/
-} 
-.muroRevelado{
-    background-color: blue;
+}
+
+.muroRodeado {
+    background-color: black;
+    background-size: 100% 100%;
+}
+
+.muroRevelado {
+    background-color: red;
     background-size: 100% 100%;
 }
 
@@ -72,6 +78,6 @@ body {
 }
 
 .momia {
-    background-image: url("imgs/joker.gif"),  url("imgs/textura3.jpeg");
+    background-image: url("imgs/joker.gif"), url("imgs/textura3.jpeg");
     background-size: 100% 100%;
 }
