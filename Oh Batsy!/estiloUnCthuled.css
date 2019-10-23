@@ -1,6 +1,7 @@
 body {
     display: grid;
-    background-color: yellow;
+    background-image: url("imgs/gotham.jpg");
+    background-size: 100% 100%;
 }
 
 .mapa {
@@ -40,9 +41,8 @@ body {
 }
 
 .techo {
-    background-color: yellow;
+    background-color: black;
 }
-
 
 .pasado {
     background-color: red;
@@ -58,26 +58,27 @@ body {
     background-size: 100% 100%;
 }
 
-.llave{
-    
+.llave {
     background-image: url("imgs/llaveBatmovil.jpg");
     background-size: 100% 100%;
- 
 }
 
-.nada{
-background-color: white;
+.nada {
+    background-image: url("imgs/nada.jpg");
+    background-size: 100% 100%;
 }
-.sarcofago{
+
+.sarcofago {
     background-image: url("imgs/urna.gif");
     background-size: 100% 100%;
 }
-.momia{
+
+.momia {
     background-image: url("imgs/momia.png");
     background-size: 100% 100%;
 }
 
-.pergamino{
+.pergamino {
     background-image: url("imgs/pergamino.gif");
     background-size: 100% 100%;
 }

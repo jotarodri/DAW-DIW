@@ -22,9 +22,15 @@ let posicionHuellaX = posicionPersonajeX - 1; //ARRIBA(-1) ABAJO(+1)
 let posicionHuellaY = posicionPersonajeY - 1; //IZQUIERDA(-1) DERECHA(+1)
 
 var arrayMuros = [];
-var objetosMuro = [];
 
-let contenidoMuro = [];
+
+let objetosMuro = [];
+let objetosPersonaje = [];
+
+let llave = false;
+let momia = false;
+let pergamino = false;
+let urna = false;
 
 window.onload = function() {
 
@@ -34,7 +40,7 @@ window.onload = function() {
 
 
 function establecerMovimiento(img) {
-    objetosRandom();
+
     let contadorPar = 0;
     let contadorImpar = 0;
 
@@ -106,24 +112,34 @@ function establecerMovimiento(img) {
 
                 newDiv.classList.add("muroRevelado");
 
-            }else if (arrayMapa[i][j] == 20 && arrayMapa[i][j-1] == 20 && arrayMapa[i][j+1] == 20 && arrayMapa[i+1][j] == 20 && arrayMapa[i+1][j-1] == 20 && arrayMapa[i+1][j+1] == 20) {
+            } else if (arrayMapa[i][j] == 20 && arrayMapa[i][j - 1] == 20 && arrayMapa[i][j + 1] == 20 && arrayMapa[i + 1][j] == 20 && arrayMapa[i + 1][j - 1] == 20 && arrayMapa[i + 1][j + 1] == 20) {
+
+                if (objetosPersonaje.includes("Llave")) {} else {
+                    objetosPersonaje.push("Llave");
+                }
 
                 newDiv.classList.add("llave");
 
-            }else if (arrayMapa[i][j] == 30 && arrayMapa[i][j-1] == 30 && arrayMapa[i][j+1] == 30 && arrayMapa[i+1][j] == 30 && arrayMapa[i+1][j-1] == 30 && arrayMapa[i+1][j+1] == 30) {
-
+            } else if (arrayMapa[i][j] == 30 && arrayMapa[i][j - 1] == 30 && arrayMapa[i][j + 1] == 30 && arrayMapa[i + 1][j] == 30 && arrayMapa[i + 1][j - 1] == 30 && arrayMapa[i + 1][j + 1] == 30) {
+                if (objetosPersonaje.includes("Cofre")) {} else {
+                    objetosPersonaje.push("Cofre");
+                }
                 newDiv.classList.add("sarcofago");
 
-            }else if (arrayMapa[i][j] == 40 && arrayMapa[i][j-1] == 40 && arrayMapa[i][j+1] == 40 && arrayMapa[i+1][j] == 40 && arrayMapa[i+1][j-1] == 40 && arrayMapa[i+1][j+1] == 40) {
+
+            } else if (arrayMapa[i][j] == 40 && arrayMapa[i][j - 1] == 40 && arrayMapa[i][j + 1] == 40 && arrayMapa[i + 1][j] == 40 && arrayMapa[i + 1][j - 1] == 40 && arrayMapa[i + 1][j + 1] == 40) {
+
+                if (objetosPersonaje.includes("Pergamino")) {} else {
+                    objetosPersonaje.push("Pergamino");
+                }
 
                 newDiv.classList.add("pergamino");
 
-            }else if (arrayMapa[i][j] == 50 && arrayMapa[i][j-1] == 50 && arrayMapa[i][j+1] == 50 && arrayMapa[i+1][j] == 50 && arrayMapa[i+1][j-1] == 50 && arrayMapa[i+1][j+1] == 50) {
+            } else if (arrayMapa[i][j] == 50 && arrayMapa[i][j - 1] == 50 && arrayMapa[i][j + 1] == 50 && arrayMapa[i + 1][j] == 50 && arrayMapa[i + 1][j - 1] == 50 && arrayMapa[i + 1][j + 1] == 50) {
 
                 newDiv.classList.add("momia");
 
-            }
-            else if (arrayMapa[i][j] == 60) {
+            } else if (arrayMapa[i][j] == 60) {
 
                 newDiv.classList.add("nada");
 
@@ -131,12 +147,13 @@ function establecerMovimiento(img) {
 
 
             document.querySelector(".mapa").appendChild(newDiv);
+            objetosRandom();
         }
 
         document.onkeydown = moverse;
-       
+
     }
-    
+
 }
 
 
@@ -294,7 +311,7 @@ function comprobarMuro(params) {
         }
 
     }
-    
+
 }
 
 
@@ -311,58 +328,54 @@ function pintarMuro(contadorPilar) {
                     for (let x = 0; x < 5; x++) {
 
                         if (arrayMapa[coordernadaY + y][coordernadaX + x] == 1) {
-                            arrayMapa[coordernadaY + y][coordernadaX + x] = contenidoMuro[comparador];
+                            arrayMapa[coordernadaY + y][coordernadaX + x] = objetosMuro[comparador];
                         }
 
                     }
                 }
-
-
             }
 
             comparador++;
         }
     }
 
-    
+
 }
 
 
 function objetosRandom() {
 
-    let llave = false;
-    let momia = false;
-    let pergamino = false;
-    let urna = false;
-    
-    for (let index = 0; index < 20; index++) {
-      
-        let random  = Math.floor(Math.random() * 5);
 
-        if (random == 0 && !llave) {//LLAVE 20
-            contenidoMuro.push(20);
+
+    for (let index = 0; index < 20; index++) {
+
+        let random = Math.floor(Math.random() * 10);
+
+        if (random == 0 && !llave) { //LLAVE 20
+            objetosMuro.push(20);
             llave = true;
 
-        } else if (random == 1 && !urna) {//URNA 30
-            contenidoMuro.push(30);
+        } else if (random == 1 && !urna) { //URNA 30
+            objetosMuro.push(30);
+
             urna = true;
 
-        } else if (random == 2 && !momia) {//MOMIA 40
-            contenidoMuro.push(40);
+        } else if (random == 2 && !momia) { //MOMIA 40
+            objetosMuro.push(40);
             momia = true;
 
-        } else if (random == 3 && !pergamino) {//PERGAMINO 50
-            contenidoMuro.push(50);
+        } else if (random == 3 && !pergamino) { //PERGAMINO 50
+            objetosMuro.push(50);
+
             pergamino = true;
 
-        } else {//NADA 60
-            contenidoMuro.push(60);
+        } else { //NADA 60
+            objetosMuro.push(60);
 
         }
 
-        
+
     }
 
 
 }
-
