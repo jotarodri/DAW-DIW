@@ -64,8 +64,8 @@ body {
 }
 
 .nada {
-    background-image: url("imgs/nada.jpg");
-    background-size: 100% 100%;
+    background-image: url("imgs/pared.jpg");
+    /* background-size: 100% 100%;*/
 }
 
 .sarcofago {

@@ -1,4 +1,6 @@
-let arrayMapa = [
+var arrayMapa = new Array();
+
+arrayMapa = [
     [8, 8, 8, 8, 8, 8, 8, 8, 8, 2, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0],
@@ -17,7 +19,7 @@ let arrayMapa = [
 
 let posicionPersonajeX = 9;
 let posicionPersonajeY = 0;
-
+let stringImagen = "personajeDerecha";
 let posicionVillanoX = 14;
 let posicionVillanoY = 13;
 
@@ -38,10 +40,10 @@ let urna = false;
 window.onload = function() {
 
     establecerMovimiento();
-
+    setInterval(movimientoMomia, 1000);
 
 }
-setInterval(movimientoMomia, 2000);
+
 
 function establecerMovimiento(img) {
 
@@ -80,6 +82,8 @@ function establecerMovimiento(img) {
                     case "batmanArriba":
                         newDiv.classList.add("personajeArriba");
                         break;
+                        /*default:
+                            newDiv.classList.add(stringImagen);*/
 
                 }
             }
@@ -178,7 +182,7 @@ function moverse(params) {
                     reiniciarMapa();
                     moverArriba();
                     establecerMovimiento("batmanArriba");
-
+                    stringImagen = "batmanArriba";
                     comprobarMuro();
 
                 }
@@ -195,6 +199,7 @@ function moverse(params) {
                     reiniciarMapa();
                     moverAbajo();
                     establecerMovimiento("batmanAbajo");
+                    stringImagen = "batmanAbajo";
                     comprobarMuro();
 
                 }
@@ -211,7 +216,7 @@ function moverse(params) {
                     reiniciarMapa();
                     moverIzquierda();
                     establecerMovimiento("batmanIzquierda");
-
+                    stringImagen = "batmanIzquierda";
                     comprobarMuro();
                 }
             }
@@ -227,7 +232,7 @@ function moverse(params) {
                     reiniciarMapa();
                     moverDerecha();
                     establecerMovimiento("batmanDerecha");
-
+                    stringImagen = "batmanDerecha";
                     comprobarMuro();
                 }
             }
@@ -295,7 +300,7 @@ function comprobarMuro(params) {
             //console.log("pilar " + contadorPilar + " -> " + contador);
 
 
-            if (contador == 14) {
+            if (contador == 13) {
                 // console.log("pilar " + contadorPilar + " completado")
                 pintarMuro(contadorPilar);
             }
@@ -375,69 +380,42 @@ function objetosRandom() {
 function movimientoMomia() {
 
 
-    if (posicionVillanoX < posicionPersonajeX) {
+    if (posicionVillanoX < posicionPersonajeX && arrayMapa[posicionVillanoY][posicionVillanoX + 1] != 1) {
+        console.log("derecha")
+        arrayMapa[posicionVillanoY][posicionVillanoX] = 0;
+        posicionVillanoX++;
+        arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
+        reiniciarMapa();
 
 
-        if (arrayMapa[posicionVillanoY][posicionVillanoX++] != 1) {
 
-            arrayMapa[posicionVillanoY][posicionVillanoX].classList.remove("villano");
-            posicionVillanoX++;
-
-            arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
-
-            reiniciarMapa();
-            establecerMovimiento();
-
-        }
-    } else if (posicionVillanoX > posicionPersonajeX) {
-
-        if (arrayMapa[posicionVillanoY][posicionVillanoX--] != 1) {
-
-            arrayMapa[posicionVillanoY][posicionVillanoX].classList.remove("villano");
-            posicionVillanoX--;
-
-            arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
-
-            reiniciarMapa();
-            establecerMovimiento();
-
-        }
-    }
-
-    if (posicionVillanoY < posicionPersonajeY) {
-
-        if (arrayMapa[posicionVillanoY + 1][posicionVillanoX] != 1) {
-
-            arrayMapa[posicionVillanoY][posicionVillanoX].classList.remove("villano");
-
-            posicionVillanoY++;
-
-            arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
-
-            reiniciarMapa();
-            establecerMovimiento();
-
-        }
+    } else if (posicionVillanoX > posicionPersonajeX && arrayMapa[posicionVillanoY][posicionVillanoX - 1] != 1) {
+        console.log("izquierda")
+        arrayMapa[posicionVillanoY][posicionVillanoX] = 0;
+        posicionVillanoX--;
+        arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
+        reiniciarMapa();
 
 
-    } else if (posicionVillanoY > posicionPersonajeY) {
 
+    } else if (posicionVillanoY < posicionPersonajeY && arrayMapa[posicionVillanoY + 1][posicionVillanoX] != 1) {
+        console.log("abajo")
 
-        if (arrayMapa[posicionVillanoY - 1][posicionVillanoX] != 1) {
+        arrayMapa[posicionVillanoY][posicionVillanoX] = 0;
+        posicionVillanoY++;
+        arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
+        reiniciarMapa();
 
-            arrayMapa[posicionVillanoY][posicionVillanoX].classList.remove("villano");
-            posicionVillanoY--;
-
-            arrayMapa[posicionVillanoY--][posicionVillanoX] = 4;
-
-            reiniciarMapa();
-            establecerMovimiento();
-
-        }
+    } else if (posicionVillanoY > posicionPersonajeY && arrayMapa[posicionVillanoY - 1][posicionVillanoX] != 1) {
+        console.log("arriba")
+        arrayMapa[posicionVillanoY][posicionVillanoX] = 0;
+        posicionVillanoY--;
+        arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
+        reiniciarMapa();
 
 
     }
     console.log("Momia Y -> " + posicionVillanoY + " Momia X -> " + posicionVillanoX);
-
+    establecerMovimiento(stringImagen);
 
 }
