@@ -13,6 +13,17 @@ body {
     grid-template-rows: repeat(14, 1fr);
 }
 
+h1{
+
+    color: white;
+    text-align: center;
+}
+
+.vidas{
+    background-image: url("imgs/vida.png");
+    background-size: 100% 100%;
+}
+
 .camino {
     background-image: url("imgs/camino.jpeg");
     background-size: 100% 100%;
@@ -26,11 +37,6 @@ body {
 
 .muroRevelado {
     background-color: red;
-    background-size: 100% 100%;
-}
-
-.puerta {
-    background-image: url("imgs/logo.png");
     background-size: 100% 100%;
 }
 
@@ -49,7 +55,12 @@ body {
 }
 
 .puerta {
-    background-image: url("imgs/logo.png");
+    background-image: url("imgs/logo.png"), url("imgs/camino.jpeg");
+    background-size: 100% 100%;
+}
+
+.salida{
+    background-image: url("imgs/logo.png"), url("imgs/camino.jpeg");
     background-size: 100% 100%;
 }
 
