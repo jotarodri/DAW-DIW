@@ -82,7 +82,7 @@ function establecerMovimiento(img,array) {
                 arrayMapa[0][9] = 99;
             }
 
-            if (arrayMapa[i][j] == 99) {
+            if (arrayMapa[0][9] == 99) {
 
                 newDiv.classList.add("salida");
             }
@@ -180,9 +180,10 @@ function establecerMovimiento(img,array) {
             if (llavePJ && urnaPJ) {
                 arrayMapa[0][9] = 99;
             }
-
-       
-
+            if (posicionPersonajeY == 0 && posicionPersonajeX == 9 && arrayMapa[0][9] == 99) {
+                //aumentarNivel();
+                reiniciarTodo();
+            }
 
             document.querySelector(".mapa").appendChild(newDiv);
             objetosRandom();
@@ -211,13 +212,7 @@ function reiniciarMapa() {
 
 function moverse(params) {
 
-    try {
-        if (arrayMapa[posicionPersonajeY-1][posicionPersonajeX] == 99) {
-            nivel++;
-            reiniciarTodo();
-            
-        }  
-    } catch (error) {}
+  
 
     switch (params.key) {
 
@@ -231,6 +226,7 @@ function moverse(params) {
                 if ((arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 1) && (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 5)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 20)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 30)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 40)&& (arrayMapa[posicionPersonajeY- 1][posicionPersonajeX] != 50)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 60)) {
                     reiniciarMapa();
                     moverArriba();
+                    //aumentarNivel();
                     establecerMovimiento("batmanArriba");
                     stringImagen = "batmanArriba";
                     comprobarMuro();
@@ -251,7 +247,7 @@ function moverse(params) {
                     if (arrayMapa[0][9] != 8) {
                         arrayMapa[0][9] = 8;
                     }
-                    
+                   //aumentarNivel();
                     establecerMovimiento("batmanAbajo");
                     stringImagen = "batmanAbajo";
                     comprobarMuro();
@@ -269,6 +265,7 @@ function moverse(params) {
                 if ((arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 1) && (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 20)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] !=30)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 40)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 50)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 60)) {
                     reiniciarMapa();
                     moverIzquierda();
+                    //aumentarNivel();
                     establecerMovimiento("batmanIzquierda");
                     stringImagen = "batmanIzquierda";
                     comprobarMuro();
@@ -285,6 +282,7 @@ function moverse(params) {
                 if ((arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 1) && (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 20)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] !=30)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 40)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 50)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 60)) {
                     reiniciarMapa();
                     moverDerecha();
+                    //aumentarNivel();
                     establecerMovimiento("batmanDerecha");
                     stringImagen = "batmanDerecha";
                     comprobarMuro();
@@ -293,9 +291,10 @@ function moverse(params) {
             break;
 
     }
-    if (arrayMapa[posicionPersonajeY][posicionPersonajeX] != 3) {
+    if ((arrayMapa[posicionPersonajeY][posicionPersonajeX] != 3)) {
         arrayMapa[posicionPersonajeY][posicionPersonajeX] = 3;
     }
+    
 
 
 }
@@ -617,13 +616,19 @@ function reiniciarTodo() {
      if (arrayMapa[i][j] == 60) {
         arrayMapa[i][j] = 1;
      }
-     if (arrayMapa[i][j] == 99) {
-        arrayMapa[i][j] = 8;
-     }
      
        
      
     }
 }
+
+arrayMapa[0][9] = 2;
     establecerMovimiento();
+}
+
+function aumentarNivel(){
+  
+            nivel++;
+            reiniciarTodo();
+           
 }
