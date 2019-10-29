@@ -26,10 +26,6 @@ let posicionVillanoX = 14;
 let posicionVillanoY = 13;
 
 
-let posicionVillano2X = 2;
-let posicionVillano2Y = 13;
-
-
 let posicionVillanoCajaX = 2;
 let posicionVillanoCajaY = 10;
 
@@ -181,7 +177,11 @@ function establecerMovimiento(img,array) {
                 arrayMapa[0][9] = 99;
             }
 
-       
+            if (arrayMapa[posicionPersonajeY][posicionPersonajeX] == 99) {
+                nivel++;
+                reiniciarTodo();
+               
+            } 
 
 
             document.querySelector(".mapa").appendChild(newDiv);
@@ -212,11 +212,7 @@ function reiniciarMapa() {
 function moverse(params) {
 
     //try {
-        if (arrayMapa[posicionPersonajeY][posicionPersonajeX] == 99) {
-            nivel++;
-            reiniciarTodo();
-           
-        }  
+         
    // } catch (error) {}
 
     switch (params.key) {
@@ -445,8 +441,8 @@ function objetosRandom() {
 
 function movimientoMomia() {
 var huellaAnterior = false;
-    if (nivel < 2) {
-        
+   
+        //ESTABLECER QUE NO ATRAVIESE MURO REVELADO(LLAVE, PERGAMINO, URNA);
     
     if (posicionVillanoX < posicionPersonajeX && arrayMapa[posicionVillanoY][posicionVillanoX + 1] != 1) {
         //console.log("derecha")
@@ -530,78 +526,6 @@ var huellaAnterior = false;
 
 
     }
-}else{
-//arrayMapa[13][2] = 4;
-
-
-if (posicionVillanoX < posicionPersonajeX && arrayMapa[posicionVillanoY][posicionVillanoX + 1] != 1) {
-    //console.log("derecha")
-    arrayMapa[posicionVillanoY][posicionVillanoX] = 0;
-    posicionVillanoX++;
-    arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
-    reiniciarMapa();
-
-
-
-} else if (posicionVillanoX > posicionPersonajeX && arrayMapa[posicionVillanoY][posicionVillanoX - 1] != 1) {
- //   console.log("izquierda")
-    arrayMapa[posicionVillanoY][posicionVillanoX] = 0;
-    posicionVillanoX--;
-    arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
-    reiniciarMapa();
-
-
-
-} else if (posicionVillanoY < posicionPersonajeY && arrayMapa[posicionVillanoY + 1][posicionVillanoX] != 1) {
-   // console.log("abajo")
-
-    arrayMapa[posicionVillanoY][posicionVillanoX] = 0;
-    posicionVillanoY++;
-    arrayMapa[posicionVillanoY][posicionVillanoX] = 4;
-    reiniciarMapa();
-
-} else if (posicionVillanoY > posicionPersonajeY && arrayMapa[posicionVillanoY - 1][posicionVillanoX] != 1) {
-   // console.log("arriba")
-    arrayMapa[posicionVillanoY][posicionVillanoX] = 0;
-    posicionVillanoY--;
-    arrayMapa[posicionVillanoY][posicionVillano2X] = 4;
-    reiniciarMapa();
-}
-if (posicionVillano2X < posicionPersonajeX && arrayMapa[posicionVillano2Y][posicionVillano2X + 1] != 1) {
-    //console.log("derecha")
-    arrayMapa[posicionVillano2Y][posicionVillano2X] = 0;
-    posicionVillano2X++;
-    arrayMapa[posicionVillano2Y][posicionVillano2X] = 4;
-    reiniciarMapa();
-
-
-
-} else if (posicionVillano2X > posicionPersonajeX && arrayMapa[posicionVillano2Y][posicionVillano2X - 1] != 1) {
- //   console.log("izquierda")
-    arrayMapa[posicionVillano2Y][posicionVillano2X] = 0;
-    posicionVillano2X--;
-    arrayMapa[posicionVillano2Y][posicionVillano2X] = 4;
-    reiniciarMapa();
-
-
-
-} else if (posicionVillano2Y < posicionPersonajeY && arrayMapa[posicionVillano2Y + 1][posicionVillano2X] != 1) {
-   // console.log("abajo")
-
-    arrayMapa[posicionVillano2Y][posicionVillano2X] = 0;
-    posicionVillano2Y++;
-    arrayMapa[posicionVillano2Y][posicionVillano2X] = 4;
-    reiniciarMapa();
-
-} else if (posicionVillano2Y > posicionPersonajeY && arrayMapa[posicionVillano2Y - 1][posicionVillano2X] != 1) {
-   // console.log("arriba")
-    arrayMapa[posicionVillano2Y][posicionVillano2X] = 0;
-    posicionVillano2Y--;
-    arrayMapa[posicionVillano2Y][posicionVillano2X] = 4;
-    reiniciarMapa();
-}
-
-}
 
 
    // console.log("Momia Y -> " + posicionVillanoY + " Momia X -> " + posicionVillanoX);
@@ -638,10 +562,12 @@ function mostrarVidasScore() {
 
 function reiniciarTodo() {
     reiniciarMapa();
-    posicionPersonajeY = 1;
+    posicionPersonajeY = 0;
     posicionPersonajeX = 9;
     posicionVillanoX = 14;
     posicionVillanoY = 13;
+
+    stringImagen = "batmanDerecha";
 
 llavePJ = false;
 urnaPJ = false;
