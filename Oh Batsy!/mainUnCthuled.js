@@ -1,3 +1,4 @@
+
 var arrayMapa = new Array();
 
 arrayMapa = [
@@ -177,7 +178,7 @@ function establecerMovimiento(img,array) {
                 arrayMapa[0][9] = 99;
             }
 
-            if (arrayMapa[posicionPersonajeY][posicionPersonajeX] == 99) {
+            if (posicionPersonajeY == 0 && posicionPersonajeX == 9 && arrayMapa[0][9]== 99) {
                 nivel++;
                 reiniciarTodo();
                
@@ -222,7 +223,7 @@ function moverse(params) {
         case "ArrowUp":
             
           
-     //   if ((posicionPersonajeY - 1 != 0)) {
+      //  if ((posicionPersonajeY - 1 != 0)) {
 
                 if ((arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 1) && (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 5)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 20)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 30)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 40)&& (arrayMapa[posicionPersonajeY- 1][posicionPersonajeX] != 50)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 60)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 8)) {
                     reiniciarMapa();
@@ -235,7 +236,7 @@ function moverse(params) {
                     comprobarMuro();
 
                 }
-           // }
+          // }
          break;
 
 
@@ -244,7 +245,7 @@ function moverse(params) {
         case "S":
         case "ArrowDown":
             if (posicionPersonajeY + 1 != 14) {
-                if ((arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 1) && (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 5)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 20)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 30)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 40)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 50)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 60)) {
+                if ((arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 1) && (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 5)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 20)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 30)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 40)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 50)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 60)&& (arrayMapa[posicionPersonajeY + 1][posicionPersonajeX] != 8)) {
                     reiniciarMapa();
                     moverAbajo();
                     if (arrayMapa[0][9] != 8) {
@@ -265,7 +266,7 @@ function moverse(params) {
        if (posicionPersonajeX - 1 != -1) {
 
 
-                if ((arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 1) && (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 20)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] !=30)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 40)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 50)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 60)) {
+                if ((arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 1) && (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 20)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] !=30)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 40)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 50)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 60)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX - 1] != 8)) {
                     reiniciarMapa();
                     moverIzquierda();
                     if (arrayMapa[0][9] != 8) {
@@ -284,7 +285,7 @@ function moverse(params) {
             if (posicionPersonajeX + 1 != 21) {
 
 
-                if ((arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 1) && (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 20)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] !=30)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 40)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 50)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 60)) {
+                if ((arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 1) && (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 20)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 5)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] !=30)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 40)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 50)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 60)&& (arrayMapa[posicionPersonajeY][posicionPersonajeX + 1] != 8)) {
                     reiniciarMapa();
                     moverDerecha();
                     if (arrayMapa[0][9] != 8) {
@@ -295,11 +296,16 @@ function moverse(params) {
                     comprobarMuro();
                 }
             }
+
             break;
 
     }
     if (arrayMapa[posicionPersonajeY][posicionPersonajeX] != 3) {
         arrayMapa[posicionPersonajeY][posicionPersonajeX] = 3;
+    }
+    if ((posicionPersonajeX == posicionVillanoX && posicionPersonajeY == posicionVillanoY )) {
+        vidas--;
+        reiniciarTodo();
     }
 
 
@@ -531,10 +537,10 @@ var huellaAnterior = false;
    // console.log("Momia Y -> " + posicionVillanoY + " Momia X -> " + posicionVillanoX);
     establecerMovimiento(stringImagen);
 
-    if ((posicionVillanoX == posicionPersonajeX && posicionVillanoY == posicionPersonajeY)||(posicionVillano2X == posicionPersonajeX && posicionVillano2Y == posicionPersonajeY)) {
+    if ((posicionVillanoX == posicionPersonajeX && posicionVillanoY == posicionPersonajeY)) {
         vidas--;
        reiniciarTodo();
-      
+
     }
 
 if (vidas == 0) {
@@ -563,11 +569,11 @@ function mostrarVidasScore() {
 function reiniciarTodo() {
     reiniciarMapa();
     posicionPersonajeY = 0;
-    posicionPersonajeX = 9;
+   posicionPersonajeX = 9;
     posicionVillanoX = 14;
     posicionVillanoY = 13;
 
-    stringImagen = "batmanDerecha";
+stringImagen = "batmanDerecha";
 
 llavePJ = false;
 urnaPJ = false;
@@ -582,7 +588,7 @@ momiaPJ = false;
         for (let j = 0; j < 21; j++) {
      
      if (arrayMapa[i][j] == 3) {
-        arrayMapa[i][j] = 0;
+        arrayMapa[i][j] = 3;
      }
      if (arrayMapa[i][j] == 5) {
         arrayMapa[i][j] = 1;
@@ -592,28 +598,43 @@ momiaPJ = false;
      }
 
      if (arrayMapa[i][j] == 20) {
-        arrayMapa[i][j] = 1;
+        arrayMapa[i][j] = 20;
      }
      if (arrayMapa[i][j] == 30) {
-        arrayMapa[i][j] = 1;
+        arrayMapa[i][j] = 30;
      }
      if (arrayMapa[i][j] == 40) {
-        arrayMapa[i][j] = 1;
+        arrayMapa[i][j] = 40;
      }
      if (arrayMapa[i][j] == 50) {
-        arrayMapa[i][j] = 1;
+        arrayMapa[i][j] = 50;
      }
      if (arrayMapa[i][j] == 60) {
-        arrayMapa[i][j] = 1;
+        arrayMapa[i][j] = 60;
      }
-     if (arrayMapa[i][j] == 99) {
-        arrayMapa[i][j] = 2;
-     }
+     
      
        
      
     }
 }
+arrayMapa[0][9] = 2;    
 objetosRandom();
     establecerMovimiento();
+}
+
+
+function Villano(posicionX, posicionY){
+
+this.posicionY = posicionY;
+this.posicionX = posicionX;
+}
+
+function crearVillano(x, y){
+
+let villano = Villano(x,y);
+
+return villano;
+
+
 }
