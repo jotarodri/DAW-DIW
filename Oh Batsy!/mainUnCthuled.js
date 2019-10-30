@@ -1,4 +1,3 @@
-
 var arrayMapa = new Array();
 
 arrayMapa = [
@@ -55,7 +54,7 @@ window.onload = function() {
 }
 
 
-function establecerMovimiento(img,array) {
+function establecerMovimiento(img) {
 
 
     for (let i = 0; i < 14; i++) {
@@ -178,7 +177,7 @@ function establecerMovimiento(img,array) {
                 arrayMapa[0][9] = 99;
             }
 
-            if (posicionPersonajeY == 0 && posicionPersonajeX == 9 && arrayMapa[0][9]== 99) {
+            if (arrayMapa[posicionPersonajeY][posicionPersonajeX] == 99) {
                 nivel++;
                 reiniciarTodo();
                
@@ -223,7 +222,7 @@ function moverse(params) {
         case "ArrowUp":
             
           
-      //  if ((posicionPersonajeY - 1 != 0)) {
+     //   if ((posicionPersonajeY - 1 != 0)) {
 
                 if ((arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 1) && (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 5)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 20)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 30)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 40)&& (arrayMapa[posicionPersonajeY- 1][posicionPersonajeX] != 50)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 60)&& (arrayMapa[posicionPersonajeY - 1][posicionPersonajeX] != 8)) {
                     reiniciarMapa();
@@ -236,7 +235,7 @@ function moverse(params) {
                     comprobarMuro();
 
                 }
-          // }
+           // }
          break;
 
 
@@ -296,19 +295,22 @@ function moverse(params) {
                     comprobarMuro();
                 }
             }
-
             break;
 
     }
     if (arrayMapa[posicionPersonajeY][posicionPersonajeX] != 3) {
         arrayMapa[posicionPersonajeY][posicionPersonajeX] = 3;
     }
-    if ((posicionPersonajeX == posicionVillanoX && posicionPersonajeY == posicionVillanoY )) {
+
+    if ((posicionPersonajeX == posicionVillanoX &&posicionPersonajeY ==  posicionVillanoY)) {
         vidas--;
-        reiniciarTodo();
+       reiniciarTodo();
+      
     }
 
-
+if (vidas == 0) {
+    alert("Fin del juego! F5 para volver a jugar")
+}
 }
 
 function moverAbajo() {
@@ -411,10 +413,11 @@ function objetosRandom() {
     let momia = false;
     let pergamino = false;
     let urna = false; 
-    let random = 0;
+    var random = 0;
+
     for (let index = 0; index < 20; index++) {
 
-        random = Math.floor(Math.random() * 5);
+        random = Math.floor(Math.random() * 4);
 
         if (random == 0 && !llave) { //LLAVE 20
             objetosMuro.push(20);
@@ -540,7 +543,7 @@ var huellaAnterior = false;
     if ((posicionVillanoX == posicionPersonajeX && posicionVillanoY == posicionPersonajeY)) {
         vidas--;
        reiniciarTodo();
-
+      
     }
 
 if (vidas == 0) {
@@ -568,18 +571,21 @@ function mostrarVidasScore() {
 
 function reiniciarTodo() {
     reiniciarMapa();
+   
     posicionPersonajeY = 0;
-   posicionPersonajeX = 9;
+    posicionPersonajeX = 9;
     posicionVillanoX = 14;
     posicionVillanoY = 13;
 
-stringImagen = "batmanDerecha";
+ //   stringImagen = "batmanDerecha";
 
 llavePJ = false;
 urnaPJ = false;
 pergaminoPJ = false;
 momiaPJ = false;
 
+
+//stringImagen = "personajeDerecha";
    objetosMuro = [];
 
     
@@ -588,7 +594,7 @@ momiaPJ = false;
         for (let j = 0; j < 21; j++) {
      
      if (arrayMapa[i][j] == 3) {
-        arrayMapa[i][j] = 3;
+        arrayMapa[i][j] = 0;
      }
      if (arrayMapa[i][j] == 5) {
         arrayMapa[i][j] = 1;
@@ -598,43 +604,25 @@ momiaPJ = false;
      }
 
      if (arrayMapa[i][j] == 20) {
-        arrayMapa[i][j] = 20;
+        arrayMapa[i][j] = 1;
      }
      if (arrayMapa[i][j] == 30) {
-        arrayMapa[i][j] = 30;
+        arrayMapa[i][j] = 1;
      }
      if (arrayMapa[i][j] == 40) {
-        arrayMapa[i][j] = 40;
+        arrayMapa[i][j] = 1;
      }
      if (arrayMapa[i][j] == 50) {
-        arrayMapa[i][j] = 50;
+        arrayMapa[i][j] = 1;
      }
      if (arrayMapa[i][j] == 60) {
-        arrayMapa[i][j] = 60;
+        arrayMapa[i][j] = 1;
      }
-     
-     
-       
+    
      
     }
 }
-arrayMapa[0][9] = 2;    
-objetosRandom();
+arrayMapa[0][9] = 2;
     establecerMovimiento();
-}
-
-
-function Villano(posicionX, posicionY){
-
-this.posicionY = posicionY;
-this.posicionX = posicionX;
-}
-
-function crearVillano(x, y){
-
-let villano = Villano(x,y);
-
-return villano;
-
 
 }
