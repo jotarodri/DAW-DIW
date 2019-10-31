@@ -51,11 +51,11 @@ let urnaPJ = false;
 window.onload = function() {
     mostrarVidasScore();
     establecerMovimiento();
-    setInterval(moverMomia, 1000);
+    setInterval(moverVillano, 1000);
 //movimientoMomia
 }
 
-anyadirMomias();
+añadirVillano();
 
 function establecerMovimiento(img) {
 
@@ -183,12 +183,13 @@ function establecerMovimiento(img) {
 
             if (arrayMapa[posicionPersonajeY][posicionPersonajeX] == 99) {
                 nivel++;
-                anyadirMomias();
-              subirNivel();
+                numeroVillanos++;
+                añadirVillano();
+                 subirNivel();
                
             } 
 
-           // anyadirMomias();
+           // añadirVillano();
 
             document.querySelector(".mapa").appendChild(newDiv);
             objetosRandom();
@@ -309,10 +310,13 @@ function moverse(params) {
     }
 
     for (let i = 0; i < villanos.length; i++) {
-        if ((posicionPersonajeY == villanos[i].posicionVillanoX && posicionPersonajeX ==  villanos[i].posicionVillanoY)) {
+        if ((posicionPersonajeY == villanos[i].posicionVillanoX && posicionPersonajeX ==  villanos[i].posicionVillanoY) && !pergaminoPJ) {
             vidas--;
            matarPersonaje();
           
+        }else if ((posicionPersonajeY == villanos[i].posicionVillanoX && posicionPersonajeX ==  villanos[i].posicionVillanoY) && pergaminoPJ) {
+           
+           
         }
         
 
@@ -543,8 +547,7 @@ function matarPersonaje() {
    
     posicionPersonajeY = 0;
     posicionPersonajeX = 9;
-    posicionVillanoX = 0;
-    posicionVillanoY = 0;
+    
 
 llavePJ = false;
 urnaPJ = false;
@@ -594,7 +597,6 @@ arrayMapa[0][9] = 2;
 
 }
 
-//objeto momia
 function Villano(posicionVillanoX = 0, posicionVillanoY = 0) {
 
     this.posicionVillanoX = posicionVillanoX;
@@ -602,7 +604,6 @@ function Villano(posicionVillanoX = 0, posicionVillanoY = 0) {
 
 }
 
-//crear la momia
 function crearVillano(x, y) {
 
     let villano = new Villano(x, y);
@@ -611,13 +612,13 @@ function crearVillano(x, y) {
 
 }
 
-//anyado momias segun el nivel
-function anyadirMomias() {
+function añadirVillano() {
+
 
 
     for (let i = 0; i < numeroVillanos; i++) {
 
-        villanos[i] = crearVillano(13, Math.floor(Math.random() * (13 - 8)) + 8);
+        villanos[i] = crearVillano(13, Math.floor(Math.random() * 21));
 
         arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY] = 4;
     }
@@ -625,22 +626,16 @@ function anyadirMomias() {
 
 }
 
-//movimiento de la momia
-function moverMomia() {
-
-
-    //como evitar que la momia traspase los pilares seguramente sea con una condicion que lleve contains
+function moverVillano() {
   
 
 
         for (let i = 0; i < villanos.length; i++) {
 
 
-            //si la x de la momia es menor que la posicion del personaje esta se suma.
             if (villanos[i].posicionVillanoX < posicionPersonajeY) {
 
-                //si arriba hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-                if (arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 1 && arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 5) {
+                if (arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 1 && arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 5&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 20&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 30&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 40&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 50&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 60) {
                     arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY] = 0;
                     villanos[i].posicionVillanoX++;
                     arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY] = 4;
@@ -648,11 +643,9 @@ function moverMomia() {
 
                 reiniciarMapa();
 
-                //si es mayor esta se resta
             } else if (villanos[i].posicionVillanoX > posicionPersonajeY) {
 
-                //si abajo hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-                if (arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY] != 1 && arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=5) {
+                if (arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY] != 1 && arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=5&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=20&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=30&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=40&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=50&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=60) {
 
                     arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]= 0;
                     villanos[i].posicionVillanoX--;
@@ -661,11 +654,9 @@ function moverMomia() {
                 reiniciarMapa();
 
             }
-            //si la posicion Y de la momia es menor de la Y del personaje se suma
             if (villanos[i].posicionVillanoY < posicionPersonajeX) {
 
-                //si a tu derecha hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-                if (arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=1 && !arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=5) {
+                if (arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=1 && arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=5&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=20&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=30&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=40&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=50&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=60) {
 
                     arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]=0;
                     villanos[i].posicionVillanoY++;
@@ -675,11 +666,9 @@ function moverMomia() {
                 reiniciarMapa();
 
 
-                //si es mayor esta se resta
             } else if (villanos[i].posicionVillanoY > posicionPersonajeX) {
 
-                //si a tu izquierda hay un pilar no puedes avanzar, pero si no lo hay si que puedes avanzar 
-                if (arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!= 1 && arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=5) {
+                if (arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!= 1 && arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=5&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=20&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=30&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=40&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=50&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=60) {
 
                     arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]= 0;
                     villanos[i].posicionVillanoY--;
@@ -690,22 +679,19 @@ function moverMomia() {
                 reiniciarMapa();
             }
 
-            /*if (momias[i].momiaX == x && momias[i].momiaY == y && !pergamino) {
-
-                quitarVida(momias[i].momiaX, momias[i].momiaY);
-
-            } else if (momias[i].momiaX == x && momias[i].momiaY == y && pergamino) {
-
-                matarPergamino(momias[i].momiaX, momias[i].momiaY);
-            }*/
         }
 
         for (let i = 0; i < villanos.length; i++) {
-            if ((villanos[i].posicionVillanoX ==  posicionPersonajeY && villanos[i].posicionVillanoY == posicionPersonajeX)) {
+            if ((villanos[i].posicionVillanoX ==  posicionPersonajeY && villanos[i].posicionVillanoY == posicionPersonajeX) && !pergaminoPJ) {
                 vidas--;
                matarPersonaje();
               
-            }
+            }/*else if ((villanos[i].posicionVillanoX ==  posicionPersonajeY && villanos[i].posicionVillanoY == posicionPersonajeX) && pergaminoPJ) {
+                numeroVillanos--;
+            arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY] = 0;
+           arrayVillano.pop();
+            establecerMovimiento();
+            }*/
             
     
         }
