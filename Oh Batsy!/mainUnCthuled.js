@@ -315,7 +315,11 @@ function moverse(params) {
            matarPersonaje();
           
         }else if ((posicionPersonajeY == villanos[i].posicionVillanoX && posicionPersonajeX ==  villanos[i].posicionVillanoY) && pergaminoPJ) {
-           
+            
+            arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]= 0;
+            matarVillano(i);   
+             pergaminoPJ = false;
+           establecerMovimiento();
            
         }
         
@@ -686,16 +690,28 @@ function moverVillano() {
                 vidas--;
                matarPersonaje();
               
-            }/*else if ((villanos[i].posicionVillanoX ==  posicionPersonajeY && villanos[i].posicionVillanoY == posicionPersonajeX) && pergaminoPJ) {
-                numeroVillanos--;
-            arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY] = 0;
-           arrayVillano.pop();
-            establecerMovimiento();
-            }*/
+            }else if ((villanos[i].posicionVillanoX ==  posicionPersonajeY && villanos[i].posicionVillanoY == posicionPersonajeX) && pergaminoPJ) {
+                arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]= 0;
+                matarVillano(i);   
+                 pergaminoPJ = false;
+               establecerMovimiento();
+            }
             
     
         }
 
 establecerMovimiento(stringImagen);
 
+}
+
+function matarVillano(idVillano) {
+    for (let i = 0; i < villanos.length; i++) {
+
+        if (i == idVillano) {
+
+            villanos.splice(i, 1);
+            numeroVillanos--;
+        }
+
+    }
 }
