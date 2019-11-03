@@ -42,8 +42,10 @@ var nivel = 1;
 var arrayVillano = [];
 var vidas = 4;
 
+
 let objetosMuro = [];
 let objetosPersonaje = [];
+let arrayVidas = new Array();
 
 let llavePJ = false;
 let momiaPJ = true;
@@ -61,6 +63,8 @@ var auxPX;
 
 window.onload = function() {
     mostrarVidasScore();
+    arrayVidas = document.getElementsByClassName("vidas");
+    ponerNivel();
     establecerMovimiento();
     setInterval(moverVillano, 1000);
 //movimientoMomia
@@ -203,6 +207,7 @@ function establecerMovimiento(img) {
 
             if (arrayMapa[posicionPersonajeY][posicionPersonajeX] == 99) {
                 nivel++;
+                ponerNivel();
                 numeroVillanos++;
                 añadirVillano();
                  subirNivel();
@@ -356,8 +361,9 @@ function moverse(params) {
 
            }else{
             arrayMapa[posicionPersonajeY][posicionPersonajeX] = 3;
-            vidas--;
+            
            matarPersonaje();
+           quitarVida();
            }
              
         }
@@ -684,7 +690,7 @@ var huellaAnterior;
 
             if (villanos[i].posicionVillanoY < posicionPersonajeY) {
 
-                if (arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 5&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 20&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 30&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 40&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 50 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 60&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 41) {
+                if (arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 5&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 20&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 30&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 40&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 50 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 60&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 41&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 8) {
 
                     arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX] = 0;
                     if (arrayMapa[villanos[i].posicionVillanoY+1][villanos[i].posicionVillanoX] == 3) {
@@ -703,7 +709,7 @@ var huellaAnterior;
 
             } else if (villanos[i].posicionVillanoY > posicionPersonajeY) {
 
-                if (arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=5&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=20&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=30&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=40&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=50 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=60&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=41) {
+                if (arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=5&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=20&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=30&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=40&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=50 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=60&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=41&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=8) {
 
                     arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]= 0;
                     if (arrayMapa[villanos[i].posicionVillanoY-1][villanos[i].posicionVillanoX] == 3) {
@@ -721,7 +727,7 @@ var huellaAnterior;
             }
             if (villanos[i].posicionVillanoX < posicionPersonajeX) {
 
-                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=50 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=41) {
+                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=50 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=41&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=8) {
 
                     arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]=0;
                     if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX+1] == 3) {
@@ -742,7 +748,7 @@ var huellaAnterior;
 
             } else if (villanos[i].posicionVillanoX > posicionPersonajeX) {
 
-                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!= 1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=50&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=41) {
+                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!= 1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=50&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=41&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=8) {
 
                     arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]= 0;
                     if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX-1] == 3) {
@@ -784,8 +790,9 @@ var huellaAnterior;
                     
                    }else{
                     arrayMapa[posicionPersonajeY][posicionPersonajeX] = 3;
-                    vidas--;
+                    
                    matarPersonaje();
+                   quitarVida();
                    }
                 }
     
@@ -828,4 +835,17 @@ function momiaCaja() {
     }
 
 
+}
+
+function quitarVida() {
+       
+    arrayVidas[0].classList.remove("vidas");
+    vidas--;
+}
+
+function ponerNivel() {
+    let divNivel = document.getElementById("nivel");
+    let texto = document.createTextNode("Nivel " + nivel);
+    divNivel.innerText = "";
+    divNivel.appendChild(texto);
 }

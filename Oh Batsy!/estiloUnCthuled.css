@@ -7,11 +7,32 @@ body {
 .mapa {
     width: 1200px;
     height: 695px;
-    margin-left: 10%;
+    margin-left: 20%;
+    margin-top: 3%;
     display: grid;
     grid-template-columns: repeat(21, 1fr);
     grid-template-rows: repeat(14, 1fr);
 }
+
+
+.vidas {
+    
+    background: black;
+    float: left;
+    margin-left: 1%;
+    margin-top: 5%;
+    width: 65px;
+    height: 110px;
+    border: solid 1px white;
+}
+
+#nivel {
+    grid-column: 1 / span 2;
+    color: white;
+    padding-right: 10%;
+    font-size: 20px;
+}
+
 
 h1{
 
