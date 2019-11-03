@@ -1,0 +1,43 @@
+body{
+
+background-image: url("imgs/fondo_galio.jpg");
+background-size: 100vw 100vh;
+}
+.keys{
+    height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-right: 30%;
+}
+.key{
+height: 150px;
+width: 150px;
+border: 1px solid black;
+margin-right: 5%;
+padding: 1%;
+}
+
+kbd{
+color: white;
+font-size: 60px;
+display: block;
+text-align: center;
+}
+
+span{
+    display: block;
+    text-align: center;
+    margin-top: 12%;
+    font-size: 30px;
+    color: yellow;
+    text-shadow: 15px 15px 15px black;
+
+}
+
+.transicion {
+    transform: all 0.7s;
+    transform: scale(1.1);
+    border: solid yellow 3px;
+    box-shadow: 2px 2px 10px yellow
+}
