@@ -189,11 +189,15 @@ function establecerMovimiento(img) {
             } else if (arrayMapa[i][j] == 50 && arrayMapa[i][j - 1] == 50 && arrayMapa[i][j + 1] == 50 && arrayMapa[i + 1][j] == 50 && arrayMapa[i + 1][j - 1] == 50 && arrayMapa[i + 1][j + 1] == 50) {
     
                 newDiv.classList.add("momia");
-                
+                arrayMapa[i][j] = 51;
                 
                 auxY = i;
                 auxX = j;
                 
+    
+                } else if (arrayMapa[i][j] == 51) {
+
+                    newDiv.classList.add("momia");
     
                 } else if (arrayMapa[i][j] == 60) {
 
@@ -567,6 +571,8 @@ stringImagen = "personajeDerecha";
      }
      if (arrayMapa[i][j] == 41) {
         arrayMapa[i][j] = 1;
+     }if (arrayMapa[i][j] == 51) {
+        arrayMapa[i][j] = 1;
      }
 
      if (arrayMapa[i][j] == 20) {
@@ -633,12 +639,15 @@ stringImagen = "personajeDerecha";
         arrayMapa[i][j] = 30;
      }
      if (arrayMapa[i][j] == 40) {
-        arrayMapa[i][j] = 40;
+        arrayMapa[i][j] = 41;
      }
      if (arrayMapa[i][j] == 40) {
         arrayMapa[i][j] = 41;
      }
      if (arrayMapa[i][j] == 50) {
+        arrayMapa[i][j] = 50;
+     }
+     if (arrayMapa[i][j] == 51) {
         arrayMapa[i][j] = 50;
      }
      if (arrayMapa[i][j] == 60) {
@@ -649,6 +658,7 @@ stringImagen = "personajeDerecha";
     }
 }
 arrayMapa[0][9] = 2;
+
     establecerMovimiento();
 
 }
@@ -690,10 +700,10 @@ var huellaAnterior;
 
             if (villanos[i].posicionVillanoY < posicionPersonajeY) {
 
-                if (arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 5&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 20&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 30&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 40&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 50 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 60&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 41&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 8) {
+                if (arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 5&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 20&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 30&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 40&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 50 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 60&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 41&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 8&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 51) {
 
                     arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX] = 0;
-                    if (arrayMapa[villanos[i].posicionVillanoY+1][villanos[i].posicionVillanoX] == 3) {
+                    if (arrayMapa[villanos[i].posicionVillanoY+1][villanos[i].posicionVillanoX] == 3 ) {
                         villanos[i].posicionVillanoY++;
                         arrayMapa[villanos[i].posicionVillanoY-1][villanos[i].posicionVillanoX] = 3;
                     }else{
@@ -709,10 +719,10 @@ var huellaAnterior;
 
             } else if (villanos[i].posicionVillanoY > posicionPersonajeY) {
 
-                if (arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=5&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=20&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=30&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=40&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=50 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=60&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=41&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=8) {
+                if (arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=5&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=20&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=30&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=40&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=50 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=60&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=41&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=8&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=51) {
 
                     arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]= 0;
-                    if (arrayMapa[villanos[i].posicionVillanoY-1][villanos[i].posicionVillanoX] == 3) {
+                    if (arrayMapa[villanos[i].posicionVillanoY-1][villanos[i].posicionVillanoX] == 3 ) {
                         villanos[i].posicionVillanoY--;
                         arrayMapa[villanos[i].posicionVillanoY+1][villanos[i].posicionVillanoX] = 3;
                     }else{
@@ -727,7 +737,7 @@ var huellaAnterior;
             }
             if (villanos[i].posicionVillanoX < posicionPersonajeX) {
 
-                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=50 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=41&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=8) {
+                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=50 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=41&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=8&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=51) {
 
                     arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]=0;
                     if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX+1] == 3) {
@@ -748,7 +758,7 @@ var huellaAnterior;
 
             } else if (villanos[i].posicionVillanoX > posicionPersonajeX) {
 
-                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!= 1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=50&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=41&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=8) {
+                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!= 1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=50&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=41&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=8&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=51) {
 
                     arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]= 0;
                     if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX-1] == 3) {
@@ -808,12 +818,12 @@ function matarVillano(idVillano) {
         if (i == idVillano) {
 
             villanos.splice(i, 1);
-            numeroVillanos--;
+            
             
         }
 
     }
-
+    numeroVillanos--;
   
    
  
