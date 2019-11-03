@@ -22,8 +22,8 @@ let posicionPersonajeX = 9;
 let posicionPersonajeY = 0;
 let stringImagen = "personajeDerecha";
 
-let posicionVillanoX = 14;
-let posicionVillanoY = 13;
+let posicionVillanoY = 14;
+let posicionVillanoX = 13;
 
 var villanos = new Array();
 var numeroVillanos = 1;
@@ -36,6 +36,8 @@ let posicionHuellaY = posicionPersonajeY - 1;
 
 var arrayMuros = [];
 
+var aux;
+
 var nivel = 1;
 var arrayVillano = [];
 var vidas = 4;
@@ -44,9 +46,18 @@ let objetosMuro = [];
 let objetosPersonaje = [];
 
 let llavePJ = false;
-let momiaPJ = false;
+let momiaPJ = true;
 let pergaminoPJ = false;
 let urnaPJ = false;
+
+var auxPergamino = true;
+var matarV = false;
+
+var auxY;
+var auxX;
+
+var auxPY;
+var auxPX;
 
 window.onload = function() {
     mostrarVidasScore();
@@ -161,17 +172,26 @@ function establecerMovimiento(img) {
 
                 if (objetosPersonaje.includes("Pergamino")) {} else {
                     objetosPersonaje.push("Pergamino");
+                   
                 }
-                pergaminoPJ = true;
+                arrayMapa[i][j] = 41;
 
+
+                
                 newDiv.classList.add("pergamino");
 
+            }else if (arrayMapa[i][j] == 41) {
+                newDiv.classList.add("pergamino");
             } else if (arrayMapa[i][j] == 50 && arrayMapa[i][j - 1] == 50 && arrayMapa[i][j + 1] == 50 && arrayMapa[i + 1][j] == 50 && arrayMapa[i + 1][j - 1] == 50 && arrayMapa[i + 1][j + 1] == 50) {
-
+    
                 newDiv.classList.add("momia");
-                momiaPJ = true;
-
-            } else if (arrayMapa[i][j] == 60) {
+                
+                
+                auxY = i;
+                auxX = j;
+                
+    
+                } else if (arrayMapa[i][j] == 60) {
 
                 newDiv.classList.add("nada");
 
@@ -188,6 +208,11 @@ function establecerMovimiento(img) {
                  subirNivel();
                
             } 
+
+            if (momiaPJ) {
+                momiaCaja(auxY,auxY);
+                
+            }
 
            // añadirVillano();
 
@@ -310,17 +335,31 @@ function moverse(params) {
     }
 
     for (let i = 0; i < villanos.length; i++) {
-        if ((posicionPersonajeY == villanos[i].posicionVillanoX && posicionPersonajeX ==  villanos[i].posicionVillanoY) && !pergaminoPJ) {
+        if ((posicionPersonajeY == villanos[i].posicionVillanoY && posicionPersonajeX ==  villanos[i].posicionVillanoX) ) {
+           
+           if (objetosPersonaje.includes("Pergamino")) {
+            arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]=3;
+            matarVillano(i);   
+             establecerMovimiento();
+
+           
+                    for (let i = 0; i < objetosPersonaje.length; i++) {
+                       
+                        if (objetosPersonaje[i] == "Pergamino") {
+                            aux = i;
+                            objetosPersonaje.splice(aux, 1);
+                        }
+                        
+                    }
+                    
+                    
+
+           }else{
+            arrayMapa[posicionPersonajeY][posicionPersonajeX] = 3;
             vidas--;
            matarPersonaje();
-          
-        }else if ((posicionPersonajeY == villanos[i].posicionVillanoX && posicionPersonajeX ==  villanos[i].posicionVillanoY) && pergaminoPJ) {
-            
-            arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]= 0;
-            matarVillano(i);   
-             pergaminoPJ = false;
-           establecerMovimiento();
-           
+           }
+             
         }
         
 
@@ -491,19 +530,20 @@ function subirNivel() {
    
     posicionPersonajeY = 0;
     posicionPersonajeX = 9;
-    posicionVillanoX = 14;
-    posicionVillanoY = 13;
+    posicionVillanoY = 14;
+    posicionVillanoX = 13;
 
  //   stringImagen = "batmanDerecha";
 
 llavePJ = false;
 urnaPJ = false;
 pergaminoPJ = false;
-momiaPJ = false;
+momiaPJ = true;
 
 
 stringImagen = "personajeDerecha";
    objetosMuro = [];
+   
 
     
     for (let i = 0; i < 14; i++) {
@@ -518,6 +558,9 @@ stringImagen = "personajeDerecha";
      }
      if (arrayMapa[i][j] == 4) {
         arrayMapa[i][j] = 0;
+     }
+     if (arrayMapa[i][j] == 41) {
+        arrayMapa[i][j] = 1;
      }
 
      if (arrayMapa[i][j] == 20) {
@@ -556,7 +599,7 @@ function matarPersonaje() {
 llavePJ = false;
 urnaPJ = false;
 pergaminoPJ = false;
-momiaPJ = false;
+momiaPJ = true;
 
 
 stringImagen = "personajeDerecha";
@@ -586,6 +629,9 @@ stringImagen = "personajeDerecha";
      if (arrayMapa[i][j] == 40) {
         arrayMapa[i][j] = 40;
      }
+     if (arrayMapa[i][j] == 40) {
+        arrayMapa[i][j] = 41;
+     }
      if (arrayMapa[i][j] == 50) {
         arrayMapa[i][j] = 50;
      }
@@ -601,10 +647,10 @@ arrayMapa[0][9] = 2;
 
 }
 
-function Villano(posicionVillanoX = 0, posicionVillanoY = 0) {
+function Villano(posicionVillanoY = 0, posicionVillanoX = 0) {
 
-    this.posicionVillanoX = posicionVillanoX;
     this.posicionVillanoY = posicionVillanoY;
+    this.posicionVillanoX = posicionVillanoX;
 
 }
 
@@ -619,12 +665,11 @@ function crearVillano(x, y) {
 function añadirVillano() {
 
 
-
     for (let i = 0; i < numeroVillanos; i++) {
 
         villanos[i] = crearVillano(13, Math.floor(Math.random() * 21));
 
-        arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY] = 4;
+        arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX] = 4;
     }
 
 
@@ -632,51 +677,85 @@ function añadirVillano() {
 
 function moverVillano() {
   
-
+var huellaAnterior;
 
         for (let i = 0; i < villanos.length; i++) {
 
 
-            if (villanos[i].posicionVillanoX < posicionPersonajeY) {
+            if (villanos[i].posicionVillanoY < posicionPersonajeY) {
 
-                if (arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 1 && arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 5&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 20&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 30&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 40&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 50&& arrayMapa[villanos[i].posicionVillanoX + 1][villanos[i].posicionVillanoY] != 60) {
-                    arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY] = 0;
-                    villanos[i].posicionVillanoX++;
-                    arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY] = 4;
+                if (arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 5&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 20&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 30&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 40&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 50 && arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 60&& arrayMapa[villanos[i].posicionVillanoY + 1][villanos[i].posicionVillanoX] != 41) {
+
+                    arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX] = 0;
+                    if (arrayMapa[villanos[i].posicionVillanoY+1][villanos[i].posicionVillanoX] == 3) {
+                        villanos[i].posicionVillanoY++;
+                        arrayMapa[villanos[i].posicionVillanoY-1][villanos[i].posicionVillanoX] = 3;
+                    }else{
+                        villanos[i].posicionVillanoY++;
+                    }
+                    
+                    arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX] = 4;
+                   
+                    
                 }
 
                 reiniciarMapa();
 
-            } else if (villanos[i].posicionVillanoX > posicionPersonajeY) {
+            } else if (villanos[i].posicionVillanoY > posicionPersonajeY) {
 
-                if (arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY] != 1 && arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=5&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=20&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=30&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=40&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=50&& arrayMapa[villanos[i].posicionVillanoX - 1][villanos[i].posicionVillanoY]!=60) {
+                if (arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX] != 1 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=5&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=20&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=30&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=40&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=50 && arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=60&& arrayMapa[villanos[i].posicionVillanoY - 1][villanos[i].posicionVillanoX]!=41) {
 
-                    arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]= 0;
-                    villanos[i].posicionVillanoX--;
-                    arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]=4;
+                    arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]= 0;
+                    if (arrayMapa[villanos[i].posicionVillanoY-1][villanos[i].posicionVillanoX] == 3) {
+                        villanos[i].posicionVillanoY--;
+                        arrayMapa[villanos[i].posicionVillanoY+1][villanos[i].posicionVillanoX] = 3;
+                    }else{
+                        villanos[i].posicionVillanoY--;
+                    }
+                   
+                    arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]=4;
+                    
                 }
                 reiniciarMapa();
 
             }
-            if (villanos[i].posicionVillanoY < posicionPersonajeX) {
+            if (villanos[i].posicionVillanoX < posicionPersonajeX) {
 
-                if (arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=1 && arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=5&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=20&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=30&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=40&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=50&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY + 1]!=60) {
+                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=50 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX + 1]!=41) {
 
-                    arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]=0;
-                    villanos[i].posicionVillanoY++;
-                    arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]=4;
+                    arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]=0;
+                    if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX+1] == 3) {
+                        villanos[i].posicionVillanoX++;
+                        arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX-1] = 3;
+                        
+                }else{
+                    villanos[i].posicionVillanoX++;
+                }
+                    
+                    arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]=4;
+                 
+                   
 
                 }
                 reiniciarMapa();
 
 
-            } else if (villanos[i].posicionVillanoY > posicionPersonajeX) {
+            } else if (villanos[i].posicionVillanoX > posicionPersonajeX) {
 
-                if (arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!= 1 && arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=5&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=20&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=30&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=40&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=50&& arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY - 1]!=60) {
+                if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!= 1 && arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=5&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=20&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=30&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=40&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=50&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=60&& arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX - 1]!=41) {
 
-                    arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]= 0;
-                    villanos[i].posicionVillanoY--;
-                    arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]=4;
+                    arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]= 0;
+                    if (arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX-1] == 3) {
+                        villanos[i].posicionVillanoX--;
+                        arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX+1] = 3;
+                        
+                }else{
+                    villanos[i].posicionVillanoX--;
+                }
+                   
+                    arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]=4;
+                    
+                   
 
                 }
 
@@ -686,17 +765,29 @@ function moverVillano() {
         }
 
         for (let i = 0; i < villanos.length; i++) {
-            if ((villanos[i].posicionVillanoX ==  posicionPersonajeY && villanos[i].posicionVillanoY == posicionPersonajeX) && !pergaminoPJ) {
-                vidas--;
-               matarPersonaje();
-              
-            }else if ((villanos[i].posicionVillanoX ==  posicionPersonajeY && villanos[i].posicionVillanoY == posicionPersonajeX) && pergaminoPJ) {
-                arrayMapa[villanos[i].posicionVillanoX][villanos[i].posicionVillanoY]= 0;
-                matarVillano(i);   
-                 pergaminoPJ = false;
-               establecerMovimiento();
-            }
-            
+          
+            if ((villanos[i].posicionVillanoY ==  posicionPersonajeY && villanos[i].posicionVillanoX == posicionPersonajeX) ) {
+                if (objetosPersonaje.includes("Pergamino")) {
+                    arrayMapa[villanos[i].posicionVillanoY][villanos[i].posicionVillanoX]=3;
+                    matarVillano(i);   
+                     establecerMovimiento();
+                     
+                     for (let i = 0; i < objetosPersonaje.length; i++) {
+                        
+                         if (objetosPersonaje[i] == "Pergamino") {
+                             aux = i;
+                             objetosPersonaje.splice(aux, 1);
+                         }
+                         
+                     }
+                    
+                    
+                   }else{
+                    arrayMapa[posicionPersonajeY][posicionPersonajeX] = 3;
+                    vidas--;
+                   matarPersonaje();
+                   }
+                }
     
         }
 
@@ -711,7 +802,30 @@ function matarVillano(idVillano) {
 
             villanos.splice(i, 1);
             numeroVillanos--;
+            
         }
 
     }
+
+  
+   
+ 
+}
+
+function momiaCaja() {
+  
+    for (let i = 0; i < 14; i++) {
+        for (let j = 0; j < 21; j++) {
+           
+            if (momiaPJ) {
+                if (arrayMapa[i][j] == 50) {
+                    villanos.push(crearVillano(i - 1, j));
+                    momiaPJ = false;
+                    numeroVillanos++;
+                }
+            }
+        }
+    }
+
+
 }
