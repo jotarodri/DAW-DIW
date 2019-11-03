@@ -1,15 +1,13 @@
 
 
 window.onload = function(){
-    window.addEventListener("keydown", pulsarTecla);
-    document.querySelectorAll("div").forEach(element => {
-
-        element.addEventListener("transitionend", eliminarTransicion);
+    const keys = document.querySelectorAll(".key");
+    window.addEventListener("keydown", reproducirSonido);
+    keys.forEach(key => key.addEventListener("transitionend", eliminarTransicion));
         
-    });
 }
 
-function pulsarTecla(e) {
+function reproducirSonido(e) {
 
     let caja = document.querySelector(`div[data-key="${e.keyCode}"]`);
     caja.classList.add("transicion");
@@ -22,8 +20,8 @@ function pulsarTecla(e) {
 }
 
 function eliminarTransicion(e) {
-    let caja = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    caja.target.classList.remove("transicion");
+    console.log("Holi");
+    e.target.classList.remove("transicion");
 }
 
 
