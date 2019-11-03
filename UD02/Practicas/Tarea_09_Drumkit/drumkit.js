@@ -1,11 +1,9 @@
 
+  const keys = document.querySelectorAll('.key');
+    
+    keys.forEach(key => key.addEventListener('transitionend',eliminarTransicion));
 
-window.onload = function(){
-    const keys = document.querySelectorAll(".key");
     window.addEventListener("keydown", reproducirSonido);
-    keys.forEach(key => key.addEventListener("transitionend", eliminarTransicion));
-        
-}
 
 function reproducirSonido(e) {
 
@@ -20,8 +18,5 @@ function reproducirSonido(e) {
 }
 
 function eliminarTransicion(e) {
-    console.log("Holi");
     e.target.classList.remove("transicion");
 }
-
-
