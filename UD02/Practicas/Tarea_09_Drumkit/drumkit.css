@@ -28,7 +28,7 @@ text-align: center;
 span{
     display: block;
     text-align: center;
-    margin-top: 12%;
+    margin-top: 4%;
     font-size: 30px;
     color: yellow;
     text-shadow: 15px 15px 15px black;
@@ -36,7 +36,7 @@ span{
 }
 
 .transicion {
-    transition: 0.9s;
+    transition: 2s;
     transform: scale(1.1);
     border: solid yellow 5px;
     box-shadow: 2px 2px 10px yellow;

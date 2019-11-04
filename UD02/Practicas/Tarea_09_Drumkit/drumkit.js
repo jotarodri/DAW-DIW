@@ -2,7 +2,6 @@
   const keys = document.querySelectorAll('.key');
     
     keys.forEach(key => key.addEventListener('transitionend',eliminarTransicion));
-
     window.addEventListener("keydown", reproducirSonido);
 
 function reproducirSonido(e) {
