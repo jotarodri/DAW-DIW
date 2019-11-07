@@ -25,15 +25,18 @@ function crearCaja() {
 }
 
 function evolucionar() {
+    this.classList.remove("ultimate");
     this.classList.add("evoluciona");
     this.addEventListener("click", desevolucionar);
 }
 
 function desevolucionar() {
+    this.classList.remove("evoluciona");
     this.classList.add("desevoluciona");
     this.addEventListener("click", megaEvolucionar);
 }
 
 function megaEvolucionar() {
+    this.classList.remove("desevoluciona");
     this.classList.add("ultimate");
 }

@@ -30,21 +30,24 @@ button{
     background-color: #e10;
     transition: 1s;
     transform: translateX(166px);
+    z-index: 3;
 }
 
 .desevoluciona{
     background-color: #10e;
     transition: 1s;
     transform: translateX(0);
+    z-index: 2;
 }
 
 .ultimate{
     background-color: #441155;
     background-image: url("cthulhu.svg");
     background-size: 100% 100%;
+    z-index: 1;
 }
 
 .ultimate:hover{
-    transition: 1s;
+    transition: 0s;
     transform: scale(1.1);
 }
