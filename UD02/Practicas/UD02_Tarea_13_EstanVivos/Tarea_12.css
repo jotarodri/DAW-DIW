@@ -1,0 +1,74 @@
+body{
+    background-color:grey;
+    padding: 3rem;
+}
+
+header{
+    height: 100%;
+    width: 100%;
+}
+
+container{
+    height: 600px;
+    width: 600px;
+    margin: 1rem;
+    margin-bottom: 10%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 10px;
+}
+
+button{
+    border: 3px solid darkgrey;
+    height: 150px;
+}
+
+    
+
+.box{
+    background-color: #1e0;
+    border:3px solid #AABBAA;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    transition: transform 1s;
+}
+
+.evoluciona{
+    background-color: #e10;
+    transition: 1s;
+    transform: translateX(166px);
+}
+
+.desevoluciona{
+    background-color: #10e;
+    transition: 1s;
+    transform: translateX(0);
+}
+
+.ultimate{
+    background-color: #441155;
+    background-image: url("cthulhu.svg");
+    background-size: 100% 100%;
+  
+}
+
+.transicionRotar{
+   
+    animation-name: transicionRotar;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+   
+
+
+}
+
+@keyframes transicionRotar{
+   0%{
+    transform: rotate(0deg);
+   } 100%{
+        transform: rotate(360deg);
+    }
+}
