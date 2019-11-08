@@ -85,8 +85,9 @@ stop = false;
 }
 
 function rotarCaja(e) {
-    console.log("Entra")
+   
     e.target.classList.remove("ultimate");
+    e.target.classList.remove("transicionBotar");
     e.target.classList.add("transicionRotar");
     
 }
@@ -94,12 +95,13 @@ function rotarCaja(e) {
 
 function botarCaja(e) {
     e.target.classList.remove("ultimate");
+    e.target.classList.remove("transicionRotar");
     e.target.classList.add("transicionBotar");
     
 }
 
 function pararCaja(e) {
-   console.log("gaston");
+
 
     e.target.classList.remove("transicionBotar");
     e.target.classList.remove("transicionRotar");
