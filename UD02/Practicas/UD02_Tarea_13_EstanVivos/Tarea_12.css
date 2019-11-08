@@ -7,7 +7,7 @@ header{
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: 350px repeat(2, 1fr);
+    grid-template-columns: 350px repeat(3,100px);
 }
 
 container{
@@ -27,7 +27,7 @@ button{
 }
 
 .imagenRotar{
-    margin-left: 8%;
+    margin-left: 38%;
 height: 100px;
 width: 100px;
 background-image: url("imgs/tornado.gif");
@@ -36,19 +36,26 @@ background-size: 100% 100%;
 }
 
 .imagenBotar{
-    
+    margin-left: 58%;
 height: 100px;
 width: 100px;
-background-image: url("imgs/votar.gif");
+background-image: url("imgs/botar.png");
 background-size: 100% 100%;
+}
 
+.imagenStop{
+    margin-left: 58%;
+height: 100px;
+width: 100px;
+background-image: url("imgs/stop.png");
+background-size: 100% 100%;
 }
 
 .box{
     background-color: #1e0;
     border:3px solid #AABBAA;
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     border-radius: 10px;
     transition: transform 1s;
 }
@@ -56,15 +63,15 @@ background-size: 100% 100%;
 .evoluciona{
     background-color: #e10;
     transition: 1s;
-    transform: translateX(166px);
-    z-index: 3;
+    transform: translateX(141px);
+    z-index: 8;
 }
 
 .desevoluciona{
     background-color: #10e;
     transition: 1s;
     transform: translateX(0);
-    z-index: 2;
+    z-index: 7;
 }
 
 .ultimate{
@@ -76,13 +83,31 @@ background-size: 100% 100%;
 }
 
 .transicionRotar{
-   
+    background-color:  #441155;
+    background-image: url("cthulhu.svg");
+    background-size: 100% 100%;
+
     animation-name: transicionRotar;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    z-index: 5;
    
 }
+
+.transicionBotar{
+    background-color:  #441155;
+    background-image: url("cthulhu.svg");
+    background-size: 100% 100%;
+
+    position: relative;
+    animation-name: transicionBotar;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    z-index: 5;
+}
+
 
 @keyframes transicionRotar{
   
@@ -91,5 +116,36 @@ background-size: 100% 100%;
     } 
     100%{
         transform: rotate(360deg);
+    }
+}
+
+@keyframes transicionBotar{
+  
+    0%{
+    top: 0px;
+    left: 0px;
+     animation-timing-function: ease-out;   
+    }
+    25%{
+        top: 50px;
+        left: 50px;
+        animation-timing-function: ease-in;
+    }
+    50%{
+        bottom: 100px;
+        top: 0px;
+        left: 100px;
+        animation-timing-function: ease-out;
+    }
+    75%{
+        left: 50px;
+        bottom: 0px;
+        top: 50px;
+        animation-timing-function: ease-in;
+    } 
+    100%{
+        top: 0px;
+        left: 0px;
+        
     }
 }
