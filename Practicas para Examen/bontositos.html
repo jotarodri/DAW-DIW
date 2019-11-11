@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<container>
+
+
+</container>
+
+<resultado>
+
+
+</resultado>
+
+<script>
+    
+    window.onload = init;
+
+    window.addEventListener("keydown",insertarTecla);
+    
+    function init() {
+        const container = document.querySelector("container");
+        for (let i = 0; i < 10; i++) {
+           
+            let boton = document.createElement("button");
+            boton.innerText=i;
+            boton.value=i;
+            
+        boton.addEventListener("click",function() {
+    
+           document.querySelector("resultado").innerText+=this.value;
+
+        });
+
+
+            container.appendChild(boton);   
+        }
+        
+    }
+
+    function insertarTecla(evento) {
+        if(isNaN(evento.key)) return;
+        document.querySelector("resultado").innerText+=evento.key; 
+    }
+   
+
+    
+    </script>
+
+</body>
+</html>
