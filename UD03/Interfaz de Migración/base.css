@@ -37,7 +37,8 @@ items{
    flex-direction: column;
    width: 1300px;
    height: 600px;
-   background-color: rgba(0, 0, 0, 0.75)
+   background-color: rgba(0, 0, 0, 0.75);
+   
 }
 
 item{
@@ -63,18 +64,12 @@ button{
 
 button:hover {
     
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+  
 }
 
 button:active {
     
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    box-shadow: inset 11px 10px 5px 0px rgba(0,0,0,0.74);
 }
 
 h1{
@@ -113,11 +108,9 @@ steps * {
 
 
 .estabaEscondido{
-   
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    transition-duration: 1s;
+    transition-property: opacity;
+    opacity: 1;
 }
 
 
@@ -127,10 +120,6 @@ steps * {
 */
 progress{
 
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
 }
 
 
@@ -151,7 +140,3 @@ finalmsg{
      */
 }
 
-.noOculto{
-    transition-duration: 1s;
-    opacity: 1;
-}
