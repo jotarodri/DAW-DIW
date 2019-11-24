@@ -25,6 +25,7 @@ async function startMigration(){
                 let promesa = await megaPromesa(10);
                 
             }
+            
 
         }
         
@@ -52,3 +53,5 @@ function init(){
 
 // Init the environment when all is ready
 window.onload=init;
+
+
