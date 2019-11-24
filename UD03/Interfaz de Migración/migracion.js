@@ -1,11 +1,4 @@
-/*
 
-This Script is licensed under GPL v3 or higher
-
-Author: Angel Berlanas Vicente
-email : <berlanas_ang@gva.es>
-
-*/
 
 async function startMigration(){
 
@@ -29,9 +22,9 @@ async function startMigration(){
 
         }
         
-        //dataSteps[i].addEventListener("transitionend", startMigration); 
+    
    }
-
+   dataSteps[i].addEventListener("transitionend", startMigration); 
 }
 
 function megaPromesa(x) {
@@ -43,15 +36,10 @@ function megaPromesa(x) {
 }
 
 function init(){
-    console.info(" * Init envirnoment ");
-
-    // Set click function on button
-    document.querySelector("button").addEventListener("click",startMigration);
-
-   
+    document.querySelector("button").addEventListener("click",startMigration);   
 }
 
-// Init the environment when all is ready
+
 window.onload=init;
 
 

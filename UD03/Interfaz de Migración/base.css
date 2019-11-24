@@ -62,9 +62,8 @@ button{
 
 }
 
-button:hover {
-    
-  
+button:hover {   
+    transform: scale(1.1)
 }
 
 button:active {
@@ -119,24 +118,39 @@ steps * {
 * CSS for ProgressBars
 */
 progress{
-
+    height: auto;
+    width: auto;
+    background-color: white;
+    transition: 1s;
 }
 
+progress::-webkit-progress-value{
+    
+    background: blue;
+}
 
 
 finalmsg{
 
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    animation-name: neon;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transition: 1s;
+    opacity: 0;
 }
 
 @keyframes neon {
- 
-    /* 
-     * Fragmentos perdidos 
-     * ^(;,;)^
-     */
+    0%{
+        color: white;
+    }
+    50%{
+        color: yellow;
+        text-shadow:5px 5px 20px #FFFB0D;
+    }
+    100%{
+        color:white;
+
+    }
 }
 
