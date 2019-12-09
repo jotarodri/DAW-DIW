@@ -1,0 +1,22 @@
+body{
+background-color: grey;
+}
+
+h1{
+    color: white;
+}
+
+
+table{
+    border: 1px solid black;
+}
+
+td{
+    border: 1px solid black;
+    color: white;
+}
+
+td:nth-child(2n){
+    color: black;
+  
+}
