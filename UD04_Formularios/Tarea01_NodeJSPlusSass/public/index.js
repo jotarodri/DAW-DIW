@@ -46,6 +46,6 @@ function init() {
 
 }
 
-let archivoJSON;
+
 
 window.onload = init;
