@@ -30,7 +30,7 @@ let contador = 1;
         td.innerText = "Nombre Aparcamiento: "+aparcamiento.properties.nombre +" Calle: "+aparcamiento.properties.direccion+ " Plazas: "+ aparcamiento.properties.plazastota;
         tr.appendChild(td);
         tabla.appendChild(tr);
-     contador++;
+        contador++;
     });
 
     document.querySelector(".resultado").innerHTML="";
