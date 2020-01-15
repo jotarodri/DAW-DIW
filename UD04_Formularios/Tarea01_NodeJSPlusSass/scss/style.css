@@ -17,6 +17,9 @@ td{
 }
 
 td:nth-child(2n){
-    color: black;
-  
+    color: black; 
+}
+
+input{
+    margin-left: 20px;
 }
