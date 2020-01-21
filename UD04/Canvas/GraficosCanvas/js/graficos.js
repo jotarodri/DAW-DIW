@@ -28,7 +28,7 @@ function loadListeners(){
 
         myVinyls = [    arrayValor[0].value,
         arrayValor[1].value,
-         arrayValor[2].value,
+        arrayValor[2].value,
         arrayValor[3].value
         ];
         crearGraficos();
@@ -83,7 +83,7 @@ function buildGrafico(){
         borrarCanvas();
      miGraficoTartas.draw();
     }else if(tipoGrafico=="puntos"){
-buildGraficoLineal();
+buildLineGraph();
     }else{
         borrarCanvas();
     }
@@ -380,9 +380,51 @@ function crearGraficos() {
 
 }
 
-function buildGraficoLineal() {
-    
+function buildLineGraph() {
+
+    buildCartesianCoordinates();
+
+    ctx.beginPath();
+    ctx.fillStyle = '#000000';
+    ctx.lineWidth = 1;
+
+    let pointPositionX = 0;
+    let godValue = myCanvas.height;
+
+    ctx.font = '20px Arial';
+
+    ctx.moveTo(pointPositionX, godValue);
+
+    dioses.forEach(god => {
+        pointPositionX += 100;
+        godValue = god.poder;
+        ctx.lineTo(pointPositionX, myCanvas.height - godValue);
+        ctx.fillText(god.nombre, pointPositionX, myCanvas.height - god.poder);
+        console.log(god.nombre);
+        ctx.moveTo(pointPositionX, myCanvas.height - godValue);
+
+    });
+    ctx.stroke();
 }
+
+function buildCartesianCoordinates() {
+
+    ctx.beginPath();
+    ctx.fillStyle = '#000000';
+    ctx.lineWidth = 1;
+
+    for (let i = myCanvas.height - 100; i >= 100; i -= 100) {
+        ctx.moveTo(0, i);
+        ctx.lineTo(myCanvas.width, i);
+        ctx.fillText(myCanvas.height - i, 0, i)
+    }
+
+    ctx.stroke();
+
+    ctx.closePath();
+}
+
+
 
 function init(){
     console.log(" * Init ");
