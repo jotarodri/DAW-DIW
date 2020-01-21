@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta value="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ejercicio Canvas - Formulario </title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Michroma" />
-    <script src="js/graficos.js"></script>
+
 </head>
 <body>
 
@@ -15,19 +15,27 @@
     <main>
         <datos>
             <p class="left"> Clave</p>  <p class="right">Valor</p>
-            <input class="left" type="text" name="key_1"><input class="right" type="text" name="1">
-            <input class="left" type="text" name="key_2"><input class="right" type="text" name="2">
-            <input class="left" type="text" name="key_3"><input class="right" type="text" name="3">
-            <input class="left" type="text" name="key_4"><input class="right" type="text" name="4">
+            <input class="left" type="text" value="key_1"><input class="right" type="text" >
+            <input class="left" type="text" value="key_2"><input class="right" type="text" >
+            <input class="left" type="text" value="key_3"><input class="right" type="text" >
+            <input class="left" type="text" value="key_4"><input class="right" type="text" >
 
             <input type="button" name="grafiqueame" value="Grafiqueame">
+            <select> 
+
+                <option value="">Elige un gráfico</option>
+                <option value="barras">Gráfico de Barras</option>
+                <option value="tartas">Gráfico de Tartas</option>
+                <option value="puntos">Gráfico de Puntos</option>
+
+            </select>
         </datos>
-        <canvas width="500" height="500">
+        <canvas id="myCanvas" width="300" height="300">
 
         </canvas>
     </main>
     <footer></footer>
-
+    <script src="js/graficos.js"></script>
     
 </body>
 </html>
