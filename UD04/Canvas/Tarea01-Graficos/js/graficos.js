@@ -25,8 +25,9 @@ function loadListeners(){
      
    document.querySelectorAll("input[class='right']")[0].addEventListener("input",function() {
         dioses[0].poder = arrayValor[0].value;
+        dioses[0].nombre = arrayClave[0].value;
 
-        myVinyls = [    arrayValor[0].value,
+        myVinyls = [arrayValor[0].value,
         arrayValor[1].value,
         arrayValor[2].value,
         arrayValor[3].value
@@ -36,6 +37,7 @@ function loadListeners(){
 
     document.querySelectorAll("input[class='right']")[1].addEventListener("input",function() {
         dioses[1].poder = arrayValor[1].value;
+        dioses[1].nombre = arrayClave[1].value;
 
         myVinyls = [    arrayValor[0].value,
         arrayValor[1].value,
@@ -47,7 +49,7 @@ function loadListeners(){
 
     document.querySelectorAll("input[class='right']")[2].addEventListener("input",function() {
         dioses[2].poder = arrayValor[2].value;
-
+        dioses[2].nombre = arrayClave[2].value;
         myVinyls = [ arrayValor[0].value,
         arrayValor[1].value,
          arrayValor[2].value,
@@ -58,7 +60,8 @@ function loadListeners(){
 
     document.querySelectorAll("input[class='right']")[3].addEventListener("input",function() {
         dioses[3].poder = arrayValor[3].value;
-      
+        dioses[3].nombre = arrayClave[3].value;
+
         myVinyls = [arrayValor[0].value,
         arrayValor[1].value,
         arrayValor[2].value,
@@ -83,6 +86,7 @@ function buildGrafico(){
         borrarCanvas();
      miGraficoTartas.draw();
     }else if(tipoGrafico=="puntos"){
+        borrarCanvas();
 buildLineGraph();
     }else{
         borrarCanvas();
@@ -102,6 +106,7 @@ function drawLine(ctx, startX, startY, endX, endY,color){
     ctx.beginPath();
     ctx.moveTo(startX,startY);
     ctx.lineTo(endX,endY);
+ 
     ctx.stroke();
     ctx.restore();
 }
@@ -227,6 +232,11 @@ function drawLineTarta(ctx, startX, startY, endX, endY){
     ctx.moveTo(startX,startY);
  
     ctx.lineTo(endX,endY);
+    
+    dioses.forEach(dios => {
+        ctx.fillText(dios.nombre, endX);
+    });
+    
  
     ctx.stroke();
  
