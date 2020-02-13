@@ -62,6 +62,30 @@ height: 100px;
   border: 2px solid #222;
 }
 
+.App-resultado{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 45px;
+  margin-top: 5%;
+  margin-left: 2%;
+  
+}
+
+.pokemon{
+  
+  width: 450px;
+  border: 2px solid black;
+  border-radius: 102px 102px 102px 102px;
+}
+
+.pokemon:hover{
+  -webkit-transform:scale(1.25);
+  -moz-transform:scale(1.25);
+  -ms-transform:scale(1.25);
+  -o-transform:scale(1.25);
+  transform:scale(1.15);
+}
+
 /*
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

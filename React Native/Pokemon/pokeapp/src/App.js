@@ -14,6 +14,7 @@ class App extends Component {
         <Header />
         <Busqueda />
         <Resultado />
+       
     </div>
     
     );
@@ -57,11 +58,9 @@ class Busqueda extends Component {
 
 
 class Resultado extends React.Component{
-
   constructor(props){
     super(props);
     this.state = {
-     nombre: "gaston",
      listapokemones:[]
     };
   }
@@ -71,36 +70,55 @@ async componentDidMount(){
 let fetchPokemon = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1000");
 let listaPokemon = await fetchPokemon.json();
 
+const todosPokemons =  listaPokemon.results.map(async pokemones=> {
 
-
-this.setState({
-  nombre: listaPokemon.results[0].name,
-  listapokemones: listaPokemon.results,
+  let fetchPokemon2 = await fetch(pokemones.url);
+  let listaPokemon2 = await fetchPokemon2.json();
+  
+  return listaPokemon2;
 });
 
 
-console.log(this.state.listapokemones[0].name);  
+Promise.all(todosPokemons).then(pokemons =>{
+this.setState({
+  listapokemones: pokemons
+})
+});
+
+
+
 }
-
-
+ 
 
   render() {
 
     return (
-
+      
         <div className="App-resultado">
-         
-         
-          <div className="resultado">{this.state.listapokemones[0].name}</div>
+          {console.log(this.state.listapokemones)}
+     
+           
           
+            {this.state.listapokemones.map(pokemon => {
+          return(  <div className="pokemon">    
+           
+           <p>{pokemon.name.toUpperCase()}</p>
+           
+           <img src={pokemon.sprites.front_default} height="100" width="100"></img>
+               
+              </div>)
+            })}
           
-
+      
         </div>
         
     
     );
   }
 }
+
+
+
 
 
 export default App;
