@@ -13,8 +13,9 @@ class App extends Component {
       <div className="App">
         <Header />
         <Busqueda />
+        <Fichapokemon/>
         <Resultado />
-       
+        
     </div>
     
     );
@@ -22,12 +23,15 @@ class App extends Component {
 }
 
 class Header extends Component {
+  
+  
   render() {
     return (
   
-        <div className="App-header">
+        <div className="App-header" onClick={volverArriba}>
         <img src={letra} className="letras" alt="logo" /> 
         <img src={logo} className="App-logo" alt="logo" />
+        
         <p className="App-intro">
         </p>
         </div>
@@ -97,10 +101,8 @@ this.setState({
         <div className="App-resultado">
           {console.log(this.state.listapokemones)}
      
-           
-          
-            {this.state.listapokemones.map(pokemon => {
-          return(  <div className="pokemon">    
+           {this.state.listapokemones.map(pokemon => {
+          return(  <div className="pokemon" onClick={mostrarFicha}>    
            
            <p>{pokemon.name.toUpperCase()}</p>
            
@@ -108,17 +110,56 @@ this.setState({
                
               </div>)
             })}
-          
-      
-        </div>
         
-    
+        </div>
+
     );
   }
 }
 
+class Fichapokemon extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+     nombrePokemon:this.props.listapokemones,
+     tipo1:"",
+     tipo2:"",
+     descripcion:"",
+  
+    }
+  }
+
+  render() {
+
+      
+    return (
+
+      <div className="App-fichaPokemon">
+       
+        
+
+      </div>
+      
+  
+  );
+
+  }
 
 
+  }
 
+
+function volverArriba() {
+  /*console.log("gaston")
+  let header=document.getElementsByClassName("App-header");
+  header.scrollTop="0px";*/
+  window.scrollTo(0, 0); 
+
+}
+
+function mostrarFicha(e) {
+  
+}
 
 export default App;

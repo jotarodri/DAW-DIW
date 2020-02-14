@@ -12,8 +12,13 @@
 .App-header {
   background-color: #222;
   height: 100px;
+  width: 100%;
   padding: 20px;
   color: white;
+  position: fixed;
+  top: 0;
+  z-index: 1000000;
+  
 
 }
 .letras{
@@ -26,7 +31,8 @@ height: 100px;
 }
 
 .App-busqueda{
-  height: 100px;
+ width: 100%;
+ margin-top: 150px;
 }
 
 .buscadorPokemons{
@@ -84,6 +90,17 @@ height: 100px;
   -ms-transform:scale(1.25);
   -o-transform:scale(1.25);
   transform:scale(1.15);
+}
+
+.App-fichaPokemon{
+  position: fixed;
+  height: 500px;
+  width: 800px;
+  text-align: center;
+  word-wrap: break-word;
+  background-color: red; 
+  margin-left: 25%;
+
 }
 
 /*
