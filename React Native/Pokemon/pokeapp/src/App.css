@@ -101,8 +101,11 @@ height: 100px;
   background-color: red; 
   margin-left: 25%;
 
-}
 
+}
+.visible{
+  visibility: visible;
+}
 /*
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

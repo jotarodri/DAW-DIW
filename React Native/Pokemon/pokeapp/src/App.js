@@ -13,8 +13,9 @@ class App extends Component {
       <div className="App">
         <Header />
         <Busqueda />
-        <Fichapokemon/>
+      
         <Resultado />
+        
         
     </div>
     
@@ -93,16 +94,19 @@ this.setState({
 
 }
  
-
   render() {
 
     return (
       
         <div className="App-resultado">
-          {console.log(this.state.listapokemones)}
+        
      
            {this.state.listapokemones.map(pokemon => {
-          return(  <div className="pokemon" onClick={mostrarFicha}>    
+          return(  <div className="pokemon" key = {pokemon.name} onClick={function() {
+           
+            <Fichapokemon datos={pokemon}/>
+            
+          }}>    
            
            <p>{pokemon.name.toUpperCase()}</p>
            
@@ -121,45 +125,36 @@ class Fichapokemon extends React.Component{
 
   constructor(props){
     super(props);
-    this.state = {
-     nombrePokemon:this.props.listapokemones,
-     tipo1:"",
-     tipo2:"",
-     descripcion:"",
-  
-    }
   }
 
   render() {
-
-      
+    
     return (
 
       <div className="App-fichaPokemon">
-       
-        
+
 
       </div>
-      
-  
-  );
+
+   );
 
   }
-
-
-  }
+ }
 
 
 function volverArriba() {
-  /*console.log("gaston")
-  let header=document.getElementsByClassName("App-header");
-  header.scrollTop="0px";*/
+
   window.scrollTo(0, 0); 
 
 }
+/*
+function mostrarFicha() {
 
-function mostrarFicha(e) {
+ let ficha = document.getElementsByClassName("App-fichaPokemon")[0];
+ ficha.classList.add("visible");
+
+
   
-}
+}*/
 
 export default App;
