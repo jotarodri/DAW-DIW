@@ -13,9 +13,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Busqueda />
-      
         <Resultado />
-        
         
     </div>
     
@@ -56,7 +54,6 @@ class Busqueda extends Component {
 
         </div>
         
-    
     );
   }
 }
@@ -66,7 +63,9 @@ class Resultado extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-     listapokemones:[]
+     listapokemones:[],
+     mostrar:true,
+     pokemon:null
     };
   }
 
@@ -90,34 +89,33 @@ this.setState({
 })
 });
 
-
+const onclick = (pokemon) => {
+  this.setState({pokemon:pokemon})
+  this.setState({mostrar:!this.state.mostrar})
+}
 
 }
  
   render() {
-
-    return (
-      
+    //let pokemon;
+    if(this.state.mostrar){
+      return(
+      <div className="App-resultado">
+        {console.log("Estado refrescado")}
+        {this.state.listapokemones.map(pokemon => {
+          return (<DivPokemons onclick={this.onclick} datosPokemon={pokemon}/>)
+        })}
+    
+    </div>
+    )
+    }else{
+      return(
         <div className="App-resultado">
-        
-     
-           {this.state.listapokemones.map(pokemon => {
-          return(  <div className="pokemon" key = {pokemon.name} onClick={function() {
-           
-            <Fichapokemon datos={pokemon}/>
-            
-          }}>    
-           
-           <p>{pokemon.name.toUpperCase()}</p>
-           
-           <img src={pokemon.sprites.front_default} height="100" width="100"></img>
-               
-              </div>)
-            })}
-        
+          <Fichapokemon pokemon={pokemon} listaPokemon={this.state.listapokemones} />
         </div>
-
-    );
+      )
+    
+    
   }
 }
 
@@ -126,18 +124,39 @@ class Fichapokemon extends React.Component{
   constructor(props){
     super(props);
   }
+  render(){
+    return(
+      <div>{this.props.pokemon.name}</div>
+    )
+  }
+  
 
+  }
+ }
+
+ class DivPokemons extends React.Component{
+
+  click = ()=>{
+    this.props.onclick(this.props.datosPokemon)
+  }
+
+ 
   render() {
-    
+    console.log(this.props.datosPokemon);
+
     return (
 
-      <div className="App-fichaPokemon">
-
-
+      
+      <div className="pokemon" key = {this.props.datosPokemon.name}  onClick={this.click}>    
+      {console.log(this.props)}  
+      <p>{this.props.datosPokemon.name.toUpperCase()}</p>
+      
+      <img src={this.props.datosPokemon.sprites.front_default} height="100" width="100"></img>
+          
       </div>
 
    );
-
+ 
   }
  }
 
@@ -153,8 +172,6 @@ function mostrarFicha() {
  let ficha = document.getElementsByClassName("App-fichaPokemon")[0];
  ficha.classList.add("visible");
 
-
-  
 }*/
 
 export default App;
