@@ -107,8 +107,20 @@ z-index: 9999999;
 .visible{
   visibility: visible;
 }
-/*
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}*/
+
+.novisible{
+ display: none;
+}
+
+.headerFicha{
+
+height: 500px;
+width: 1550px;
+border: 1px solid black;
+
+}
+.nombreFicha{
+  
+  font-size: 30px;
+  text-align: center;
+}
