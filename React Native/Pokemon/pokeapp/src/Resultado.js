@@ -50,7 +50,7 @@ class Resultado extends Component{
           {console.log("Estado refrescado")}
           {this.state.listapokemones.map(pokemon => {
             return (<DivPokemons onClick={this.cambiarEstado} datosPokemon={pokemon} key={pokemon.name}/>)
-          })}
+        })}
       
       </div>
       )

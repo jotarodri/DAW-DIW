@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
 }
 
 .App-logo {
@@ -18,6 +17,7 @@
   position: fixed;
   top: 0;
   z-index: 1000000;
+  text-align: center;
   
 
 }
@@ -33,9 +33,11 @@ height: 100px;
 .App-busqueda{
  width: 100%;
  margin-top: 150px;
+ text-align: center;
 }
 
 .buscadorPokemons{
+  text-align: center;
   width: 300px;
   height: 50px;
   background: #222;
@@ -74,6 +76,7 @@ height: 100px;
   grid-gap: 45px;
   margin-top: 5%;
   margin-left: 2%;
+  text-align: center;
   
 }
 
@@ -111,16 +114,25 @@ z-index: 9999999;
 .novisible{
  display: none;
 }
-
+.fichaPokemon{
+  text-align: justify;
+  height: 600px;
+  width: 1550px;
+  border: 2px solid black;
+  border-radius: 4px;
+}
 .headerFicha{
 
-height: 500px;
+height: 200px;
 width: 1550px;
-border: 1px solid black;
-
+display: flex;
+align-items: center;
+justify-content: center;
+border-bottom: 2px solid black;
 }
 .nombreFicha{
   
   font-size: 30px;
-  text-align: center;
+  
 }
+
