@@ -1,5 +1,4 @@
-.App {
-}
+
 
 .App-logo {
   animation: App-logo-spin infinite 10s linear;
@@ -75,7 +74,7 @@ height: 100px;
   grid-template-columns: repeat(3,1fr);
   grid-gap: 45px;
   margin-top: 5%;
-  margin-left: 2%;
+  margin-left: 0%;
   text-align: center;
   
 }
@@ -110,10 +109,11 @@ z-index: 9999999;
 .visible{
   visibility: visible;
 }
-
 .novisible{
- display: none;
+  visibility: hidden;
 }
+
+
 .fichaPokemon{
   text-align: justify;
   height: 600px;
@@ -135,4 +135,33 @@ border-bottom: 2px solid black;
   font-size: 30px;
   
 }
+
+.fichaPokemon{
+  text-align: center;
+  
+}
+.App-ficha{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-left: 10%;
+}
+.App-flex{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-left: 10%;
+}
+.descripcion{
+  font-size: 20px;
+}
+
+.PesoYaltura{
+  display: flex;
+  justify-content: center;
+}
+.espacio{
+  color: white;
+}
+
 

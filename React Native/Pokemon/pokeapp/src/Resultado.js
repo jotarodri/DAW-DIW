@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import DivPokemons from './DivPokemons';
 import Fichapokemon from './Fichapokemon';
+import Busqueda from './Busqueda';
 
 
 class Resultado extends Component{
+
     constructor(props){
       super(props);
       this.state = {
        listapokemones:[],
        mostrar:true,
-       pokemon:null
+       pokemon:null,
+       filtered:[],
       };
     }
   
   async componentDidMount(){
    
-  let fetchPokemon = await fetch("https://pokeapi.co/api/v2/pokemon?limit=9");
+  let fetchPokemon = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1500");
   let listaPokemon = await fetchPokemon.json();
   
   const todosPokemons =  listaPokemon.results.map(async pokemones=> {
@@ -25,8 +28,8 @@ class Resultado extends Component{
     
     return listaPokemon2;
   });
-  
-  
+
+
   Promise.all(todosPokemons).then(pokemons =>{
   this.setState({
     listapokemones: pokemons
@@ -40,7 +43,8 @@ class Resultado extends Component{
     this.setState({mostrar:false})
   }
   
-   
+  
+
     render() {
       
       if(this.state.mostrar){
@@ -51,16 +55,13 @@ class Resultado extends Component{
           {this.state.listapokemones.map(pokemon => {
             return (<DivPokemons onClick={this.cambiarEstado} datosPokemon={pokemon} key={pokemon.name}/>)
         })}
-      
+    
       </div>
       )
       }else{
         {ocultarSearch()}
         return(
-          
-          <div className="App-resultado">
-           <Fichapokemon nombrePokemon={this.state.pokemon.name} datosPokemon={this.state.pokemon} />
-          </div>
+          <Fichapokemon nombrePokemon={this.state.pokemon.name} datosPokemon={this.state.pokemon} />
         )
       
       
@@ -74,5 +75,7 @@ function ocultarSearch() {
   search.classList.add("novisible")
   btn.classList.add("novisible")
 }
+
+
 
 export default Resultado;
